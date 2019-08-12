@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Image } from 'react-native';
 import PropTypes from 'prop-types';
 
@@ -17,6 +17,11 @@ import {
 } from './styles';
 
 export default function SignUp({ navigation }) {
+  const emailRef = useRef();
+  const passwordRef = useRef();
+
+  function handleSubmit() {}
+
   return (
     <Background>
       <Container>
@@ -27,6 +32,8 @@ export default function SignUp({ navigation }) {
             placeholder="Full Name"
             autoCorrect={false}
             autoCapitalize="none"
+            returnKeyType="next"
+            onSubmitEditing={() => emailRef.current.focus()}
           />
           <FormInput
             icon="mail-outline"
@@ -34,13 +41,19 @@ export default function SignUp({ navigation }) {
             keyboardType="email-address"
             autoCorrect={false}
             autoCapitalize="none"
+            ref={emailRef}
+            returnKeyType="next"
+            onSubmitEditing={() => passwordRef.current.focus()}
           />
           <FormInput
             icon="lock-outline"
             placeholder="Password"
             secureTextEntry
+            ref={passwordRef}
+            returnKeyType="send"
+            onSubmitEditing={handleSubmit}
           />
-          <SubmitButton onPress={() => {}}>Sign up</SubmitButton>
+          <SubmitButton onPress={handleSubmit}>Sign up</SubmitButton>
         </Form>
         <SignLink onPress={() => navigation.navigate('SignIn')}>
           <SignLinkText>
