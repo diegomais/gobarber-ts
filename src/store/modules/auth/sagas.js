@@ -21,8 +21,6 @@ export function* signIn({ payload }) {
     api.defaults.headers.Authorization = `Bearer ${token}`;
 
     yield put(signInSuccess(token, user));
-
-    // TODO: Navigate to dashboard
   } catch (error) {
     Alert.alert('Login error', 'Authentication failed, check your data.');
     yield put(signFailure());
