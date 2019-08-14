@@ -35,3 +35,8 @@ export const FormInput = styled(Input)`
 export const SubmitButton = styled(Button)`
   margin-top: 20px;
 `;
+
+export const SignOutButton = styled(Button)`
+  margin-top: 20px;
+  background: #f64c75;
+`;
