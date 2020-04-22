@@ -1,0 +1,16 @@
+{
+  "name": "GoBarber",
+  "version": "1.0.0",
+  "description": "App to book and manage barber service.",
+  "main": "src/server.ts",
+  "repository": "https://github.com/diegomais/gobarber-ts.git",
+  "author": "Diego Mais",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.6",
+    "typescript": "^3.8.3"
+  }
+}
