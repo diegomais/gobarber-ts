@@ -16,7 +16,7 @@ class CreateAppointmentService {
     const checkUserExists = await usersRepository.findOne({ where: { email } });
 
     if (checkUserExists) {
-      throw Error('This email is already registered.');
+      throw new Error('This email is already registered.');
     }
 
     const hashedPassword = await hash(password, 8);
