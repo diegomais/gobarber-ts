@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useCallback, useRef } from 'react';
 import {
   Image,
   KeyboardAvoidingView,
   Platform,
   ScrollView,
+  TextInput,
   View,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import { useNavigation } from '@react-navigation/native';
+import { FormHandles } from '@unform/core';
+import { Form } from '@unform/mobile';
 
 import Input from '../../components/Input';
 import Button from '../../components/Button';
@@ -24,14 +27,21 @@ import {
 } from './styles';
 
 const SignIn: React.FC = () => {
+  const formRef = useRef<FormHandles>(null);
+  const passwordInputRef = useRef<TextInput>(null);
+
   const navigation = useNavigation();
+
+  const handleSubmit = useCallback((data: object) => {
+    console.log(data);
+  }, []);
 
   return (
     <>
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-        enabled
         style={{ flex: 1 }}
+        enabled
       >
         <ScrollView
           contentContainerStyle={{ flex: 1 }}
@@ -44,17 +54,40 @@ const SignIn: React.FC = () => {
               <Title>Log in</Title>
             </View>
 
-            <Input name="email" icon="mail" placeholder="Email" />
+            <Form onSubmit={handleSubmit} ref={formRef}>
+              <Input
+                name="email"
+                icon="mail"
+                placeholder="Email"
+                autoCapitalize="none"
+                autoCorrect={false}
+                keyboardType="email-address"
+                returnKeyType="next"
+                onSubmitEditing={() => {
+                  passwordInputRef.current?.focus();
+                }}
+              />
 
-            <Input name="password" icon="lock" placeholder="Password" />
+              <Input
+                ref={passwordInputRef}
+                name="password"
+                icon="lock"
+                placeholder="Password"
+                secureTextEntry
+                returnKeyType="send"
+                onSubmitEditing={() => {
+                  formRef.current?.submitForm();
+                }}
+              />
 
-            <Button
-              onPress={() => {
-                console.log('Log in button pressed');
-              }}
-            >
-              Log in
-            </Button>
+              <Button
+                onPress={() => {
+                  formRef.current?.submitForm();
+                }}
+              >
+                Log in
+              </Button>
+            </Form>
 
             <ForgotPassword
               onPress={() => {
