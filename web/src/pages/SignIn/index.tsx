@@ -4,6 +4,7 @@ import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
 import * as Yup from 'yup';
 import { useAuth } from '../../contexts/auth';
+import { useToast } from '../../contexts/toast';
 import getValidationErrors from '../../utils/getValidationErrors';
 
 import Input from '../../components/Input';
@@ -20,9 +21,8 @@ interface SignInFormData {
 const SignIn: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
 
-  const { user, signIn } = useAuth();
-
-  console.log(user);
+  const { signIn } = useAuth();
+  const { addToast } = useToast();
 
   const handleSubmit = useCallback(
     async (data: SignInFormData) => {
@@ -37,7 +37,7 @@ const SignIn: React.FC = () => {
           password: Yup.string().required('Password is required.'),
         });
 
-        signIn({ email: data.email, password: data.password });
+        await signIn({ email: data.email, password: data.password });
 
         await schema.validate(data, { abortEarly: false });
       } catch (error) {
@@ -47,10 +47,14 @@ const SignIn: React.FC = () => {
           formRef.current?.setErrors(errors);
         }
 
-        // TODO: Toast
+        addToast({
+          type: 'error',
+          title: 'Log in error',
+          description: 'Check your credentials and try again.',
+        });
       }
     },
-    [signIn],
+    [signIn, addToast],
   );
 
   return (
