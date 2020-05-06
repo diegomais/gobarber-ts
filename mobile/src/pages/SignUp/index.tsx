@@ -15,6 +15,7 @@ import { FormHandles } from '@unform/core';
 import { Form } from '@unform/mobile';
 
 import getValidationErrors from '../../utils/getValidationErrors';
+import api from '../../services/api';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 
@@ -34,40 +35,48 @@ const SignUp: React.FC = () => {
   const passwordInputRef = useRef<TextInput>(null);
   const navigation = useNavigation();
 
-  const handleSubmit = useCallback(async (data: SignUpFormData) => {
-    try {
-      formRef.current?.setErrors({});
+  const handleSubmit = useCallback(
+    async (data: SignUpFormData) => {
+      try {
+        formRef.current?.setErrors({});
 
-      const schema = Yup.object().shape({
-        name: Yup.string().required('Name is required.'),
-        email: Yup.string()
-          .required('Email is required.')
-          .email('Email address is invalid.'),
-        password: Yup.string().min(
-          6,
-          'Password must contain at least 6 characters.',
-        ),
-      });
+        const schema = Yup.object().shape({
+          name: Yup.string().required('Name is required.'),
+          email: Yup.string()
+            .required('Email is required.')
+            .email('Email address is invalid.'),
+          password: Yup.string().min(
+            6,
+            'Password must contain at least 6 characters.',
+          ),
+        });
 
-      await schema.validate(data, { abortEarly: false });
+        await schema.validate(data, { abortEarly: false });
 
-      // await api.post('/users', data);
+        await api.post('/users', data);
 
-      // history.push('/');
-    } catch (error) {
-      if (error instanceof Yup.ValidationError) {
-        const errors = getValidationErrors(error);
+        Alert.alert(
+          'Registration completed.',
+          'Now you can log in to GoBarber!',
+        );
 
-        formRef.current?.setErrors(errors);
+        navigation.goBack();
+      } catch (error) {
+        if (error instanceof Yup.ValidationError) {
+          const errors = getValidationErrors(error);
 
-        return;
+          formRef.current?.setErrors(errors);
+
+          return;
+        }
+        Alert.alert(
+          'Registration error',
+          'An error occurred while registering, please try again.',
+        );
       }
-      Alert.alert(
-        'Registration error',
-        'An error occurred while registering, please try again.',
-      );
-    }
-  }, []);
+    },
+    [navigation],
+  );
 
   return (
     <>
