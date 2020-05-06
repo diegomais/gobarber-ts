@@ -56,19 +56,11 @@ const Input: React.RefForwardingComponent<InputRef, InputProps> = (
       name: fieldName,
       ref: inputValueRef.current,
       path: 'value',
-      setValue(reference, value) {
-        inputValueRef.current.value = value;
-        inputElementRef.current.setNativeProps({ text: value });
-      },
-      clearValue() {
-        inputValueRef.current.value = '';
-        inputElementRef.current.clear();
-      },
     });
   }, [fieldName, registerField]);
 
   return (
-    <Container isFocused={isFocused}>
+    <Container isFocused={isFocused} hasError={!!error}>
       <Icon
         color={isFocused || isFilled ? '#ff9000' : '#666360'}
         name={icon}
