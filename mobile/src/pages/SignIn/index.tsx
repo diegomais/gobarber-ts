@@ -14,6 +14,7 @@ import { useNavigation } from '@react-navigation/native';
 import { FormHandles } from '@unform/core';
 import { Form } from '@unform/mobile';
 
+import { useAuth } from '../../contexts/auth';
 import getValidationErrors from '../../utils/getValidationErrors';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
@@ -38,36 +39,38 @@ const SignIn: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
   const passwordInputRef = useRef<TextInput>(null);
 
+  const { signIn } = useAuth();
   const navigation = useNavigation();
 
-  const handleSubmit = useCallback(async (data: SignInFormData) => {
-    try {
-      formRef.current?.setErrors({});
+  const handleSubmit = useCallback(
+    async (data: SignInFormData) => {
+      try {
+        formRef.current?.setErrors({});
 
-      const schema = Yup.object().shape({
-        email: Yup.string()
-          .required('Email is required.')
-          .email('Email address is invalid.'),
-        password: Yup.string().required('Password is required.'),
-      });
+        const schema = Yup.object().shape({
+          email: Yup.string()
+            .required('Email is required.')
+            .email('Email address is invalid.'),
+          password: Yup.string().required('Password is required.'),
+        });
 
-      await schema.validate(data, { abortEarly: false });
+        await schema.validate(data, { abortEarly: false });
 
-      // await signIn({ email: data.email, password: data.password });
+        await signIn({ email: data.email, password: data.password });
+      } catch (error) {
+        if (error instanceof Yup.ValidationError) {
+          const errors = getValidationErrors(error);
 
-      // history.push('/dashboard');
-    } catch (error) {
-      if (error instanceof Yup.ValidationError) {
-        const errors = getValidationErrors(error);
+          formRef.current?.setErrors(errors);
 
-        formRef.current?.setErrors(errors);
+          return;
+        }
 
-        return;
+        Alert.alert('Log in error', 'Check your credentials and try again.');
       }
-
-      Alert.alert('Log in error', 'Check your credentials and try again.');
-    }
-  }, []);
+    },
+    [signIn],
+  );
 
   return (
     <>
