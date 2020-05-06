@@ -32,7 +32,6 @@ const SignIn: React.FC = () => {
         formRef.current?.setErrors({});
 
         const schema = Yup.object().shape({
-          name: Yup.string().required('Name is required.'),
           email: Yup.string()
             .required('Email is required.')
             .email('Email address is invalid.'),
