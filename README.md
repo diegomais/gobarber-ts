@@ -54,7 +54,7 @@ The project can be built with npm or Yarn, so choose one of the approach bellow 
 
 You can obtain the project by running the instruction bellow on your terminal:
 
-`git clone https://github.com/diegomais/meetapp.git`
+`git clone https://github.com/diegomais/gobarber-ts.git`
 
 #### Setting up Databases and Services
 
@@ -70,7 +70,7 @@ We recommend use [Docker](https://www.docker.com) to install and run the databas
 
 #### Installing dependencies and running the server
 
-Run the instructions bellow inside `packages/api` directory:
+Run the instructions bellow inside `api` directory:
 
 1. `npm install`
 2. `npm run dev:server`
@@ -84,7 +84,7 @@ or
 
 #### Installing dependencies and running the web application
 
-Run the instructions bellow inside `packages/web` directory:
+Run the instructions bellow inside `web` directory:
 
 1. `npm install`
 2. `npm start`
@@ -102,7 +102,7 @@ Follow the instructions for React Native CLI available in the official [React Na
 
 #### Installing dependencies and running the mobile application
 
-Run the instructions bellow inside `packages/mobile` directory:
+Run the instructions bellow inside `mobile` directory:
 
 1. `npm install`
 2. `npm start`
