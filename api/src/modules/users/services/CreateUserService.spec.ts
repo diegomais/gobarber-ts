@@ -1,11 +1,16 @@
 import AppError from '@shared/errors/AppError';
+import FakeHashProvider from '../providers/HashProvider/fakes/FakeHashProvider';
 import FakeUsersRepository from '../repositories/fakes/FakeUsersRepository';
 import CreateUserService from './CreateUserService';
 
 describe('CreateUser', () => {
   it('should be able to create a new user', async () => {
+    const fakeHashProvider = new FakeHashProvider();
     const fakeUsersRepository = new FakeUsersRepository();
-    const createUserService = new CreateUserService(fakeUsersRepository);
+    const createUserService = new CreateUserService(
+      fakeUsersRepository,
+      fakeHashProvider,
+    );
 
     const name = 'John Doe';
     const email = 'email@domain.com';
@@ -19,12 +24,15 @@ describe('CreateUser', () => {
     expect(user).toHaveProperty('id');
     expect(user.name).toBe(name);
     expect(user.email).toBe(email);
-    expect(user).not.toHaveProperty('password');
   });
 
   it('should not be able to create a new user with an already registered email', async () => {
+    const fakeHashProvider = new FakeHashProvider();
     const fakeUsersRepository = new FakeUsersRepository();
-    const createUserService = new CreateUserService(fakeUsersRepository);
+    const createUserService = new CreateUserService(
+      fakeUsersRepository,
+      fakeHashProvider,
+    );
 
     const name = 'John Doe';
     const email = 'email@domain.com';
@@ -35,7 +43,7 @@ describe('CreateUser', () => {
       password,
     });
 
-    await expect(
+    expect(
       createUserService.execute({
         email,
         name: 'Foo Bar',
