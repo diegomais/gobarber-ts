@@ -16,11 +16,11 @@ class UsersRepository implements IUsersRepository {
     email,
     password,
   }: ICreateUserDTO): Promise<User> {
-    const appointment = this.ormRepository.create({ name, email, password });
+    const user = this.ormRepository.create({ name, email, password });
 
-    await this.ormRepository.save(appointment);
+    await this.ormRepository.save(user);
 
-    return appointment;
+    return user;
   }
 
   public async findByEmail(email: string): Promise<User | undefined> {
