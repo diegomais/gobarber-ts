@@ -6,6 +6,16 @@ class FakeUserPasswordRecoveryTokensRepository
   implements IUserPasswordRecoveryTokensRepository {
   private userPasswordRecoveryTokens: UserPasswordRecoveryToken[] = [];
 
+  public async findByToken(
+    token: string,
+  ): Promise<UserPasswordRecoveryToken | undefined> {
+    const userPasswordRecoveryToken = this.userPasswordRecoveryTokens.find(
+      item => item.token === token,
+    );
+
+    return userPasswordRecoveryToken;
+  }
+
   public async generate(user_id: string): Promise<UserPasswordRecoveryToken> {
     const userPasswordRecoveryToken = new UserPasswordRecoveryToken();
 
