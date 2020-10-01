@@ -23,6 +23,8 @@ class FakeUserPasswordRecoveryTokensRepository
       id: uuid(),
       token: uuid(),
       user_id,
+      created_at: new Date(),
+      updated_at: new Date(),
     });
 
     this.userPasswordRecoveryTokens.push(userPasswordRecoveryToken);
