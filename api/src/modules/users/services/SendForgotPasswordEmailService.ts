@@ -33,7 +33,14 @@ class SendForgotPasswordEmailService {
       user.id,
     );
 
-    await this.mailProvider.sendMail(email, `Forgot password token: ${token}`);
+    await this.mailProvider.sendMail({
+      to: { email: user.email, name: user.name },
+      subject: 'Password recovery',
+      templateData: {
+        template: 'Hi {{name}}, your password recovery token is {{token}}.',
+        variables: { name: user.name, token },
+      },
+    });
   }
 }
 
