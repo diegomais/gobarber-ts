@@ -2,31 +2,31 @@
 
 ** RF **
 
-[ ] User must be able to recover password informing their e-mail.
-[ ] User must receive an email with password recovery instructions.
-[ ] User must be able to reset their password.
+[X] User must be able to recover password informing their e-mail.
+[X] User must receive an email with password recovery instructions.
+[X] User must be able to reset their password.
 
 ** RNF **
 
-[ ] Use Mailtrap to test email service in development environment.
+[X] Use Ethereal to test email service in development environment.
 [ ] Use Amazon SES email service for production environment.
 [ ] Sending of emails must happen in background (background job).
 
 ** RN **
 
-[ ] Link sent by email to reset password, must expire in 2h.
+[X] Link sent by email to reset password, must expire in 2h.
 [ ] User needs to confirm the new password when resetting their password.
 
 # Profile update
 
 ** RF **
 
-[ ] User must be able to update their name, email and password.
+[X] User must be able to update their name, email and password.
 
 ** RN **
 
-[ ] User cannot change their email to an email already used.
-[ ] User needs to inform the old password to update their password.
+[X] User cannot change their email to an email already used.
+[X] User needs to inform the old password to update their password.
 [ ] User needs to confirm the new password to update their password.
 
 # Provider panel
