@@ -52,7 +52,7 @@
 ** RF **
 
 - [x] User must be able to list all registered service providers.
-- [ ] User must be able to list the days of a month with at least one available time from a provider.
+- [x] User must be able to list the days of a month with at least one available time from a provider.
 - [ ] User must be able to list available times on a specific day for a provider.
 - [ ] User must be able to make a new appointment with a provider.
 
