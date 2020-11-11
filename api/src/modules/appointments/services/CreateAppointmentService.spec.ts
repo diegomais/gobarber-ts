@@ -17,9 +17,11 @@ describe('CreateAppointment', () => {
 
   it('should be able to create a new appointment', async () => {
     const date = new Date();
+    const customer_id = uuid();
     const provider_id = uuid();
     const appointment = await createAppointmentService.execute({
       date,
+      customer_id,
       provider_id,
     });
 
@@ -32,11 +34,12 @@ describe('CreateAppointment', () => {
 
   it('should not be able to create two appointments on the same time', async () => {
     const date = new Date();
+    const customer_id = uuid();
     const provider_id = uuid();
-    await createAppointmentService.execute({ date, provider_id });
+    await createAppointmentService.execute({ date, customer_id, provider_id });
 
     await expect(
-      createAppointmentService.execute({ date, provider_id }),
+      createAppointmentService.execute({ date, customer_id, provider_id }),
     ).rejects.toBeInstanceOf(AppError);
   });
 });

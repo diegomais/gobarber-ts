@@ -10,6 +10,7 @@ class AppointmentsRepository implements IAppointmentsRepository {
   private appointments: Appointment[] = [];
 
   public async create({
+    customer_id,
     provider_id,
     date,
   }: ICreateAppointmentDTO): Promise<Appointment> {
