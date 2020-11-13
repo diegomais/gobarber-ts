@@ -33,7 +33,7 @@
 
 ** RF **
 
-- [ ] Provider must be able to list their schedules for a specific day.
+- [x] Provider must be able to list their schedules for a specific day.
 - [ ] Provider must receive a notification whenever there is a new appointment.
 - [ ] Provider must be able to view unread notifications.
 
@@ -53,8 +53,8 @@
 
 - [x] User must be able to list all registered service providers.
 - [x] User must be able to list the days of a month with at least one available time from a provider.
-- [ ] User must be able to list available times on a specific day for a provider.
-- [ ] User must be able to make a new appointment with a provider.
+- [x] User must be able to list available times on a specific day for a provider.
+- [x] User must be able to make a new appointment with a provider.
 
 ** RNF **
 
@@ -62,8 +62,8 @@
 
 ** RN **
 
-- [ ] Appointments must be available between 8 am and 6 pm (First at 8 am, last at 5 pm).
-- [ ] User cannot schedule an appointment that has already passed.
-- [ ] User cannot schedule services with himself.
-- [ ] Each appointment must last exactly 1 hour.
-- [ ] User cannot schedule at an already busy time.
+- [x] Appointments must be available between 8 am and 6 pm (First at 8 am, last at 5 pm).
+- [x] User cannot schedule an appointment that has already passed.
+- [x] User cannot schedule services with himself.
+- [x] Each appointment must last exactly 1 hour.
+- [x] User cannot schedule at an already busy time.
