@@ -34,13 +34,13 @@
 ** RF **
 
 - [x] Provider must be able to list their schedules for a specific day.
-- [ ] Provider must receive a notification whenever there is a new appointment.
+- [x] Provider must receive a notification whenever there is a new appointment.
 - [ ] Provider must be able to view unread notifications.
 
 ** RNF **
 
 - [ ] Provider's schedules for the day must be stored in cache.
-- [ ] Provider's notifications must be stored in MongoDB.
+- [x] Provider's notifications must be stored in MongoDB.
 - [ ] Service provider notifications must be sent in real time using Socket.io.
 
 ** RN **
