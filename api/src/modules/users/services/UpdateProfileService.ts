@@ -60,7 +60,9 @@ class UpdateProfileService {
         throw new AppError('Old password is invalid.', 401);
       }
 
-      user.password = password;
+      const hashedPassword = await this.hashProvider.generateHash(password);
+
+      user.password = hashedPassword;
     }
 
     user.email = email;
