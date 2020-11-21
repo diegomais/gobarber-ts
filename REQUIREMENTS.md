@@ -15,7 +15,7 @@
 ** RN **
 
 - [x] Link sent by email to reset password, must expire in 2h.
-- [ ] User needs to confirm the new password when resetting their password.
+- [x] User needs to confirm the new password when resetting their password.
 
 # Profile update
 
@@ -27,7 +27,7 @@
 
 - [x] User cannot change their email to an email already used.
 - [x] User needs to inform the old password to update their password.
-- [ ] User needs to confirm the new password to update their password.
+- [x] User needs to confirm the new password to update their password.
 
 # Provider panel
 
