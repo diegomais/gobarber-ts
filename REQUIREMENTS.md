@@ -9,7 +9,7 @@
 ** RNF **
 
 - [x] Use Ethereal to test email service in development environment.
-- [ ] Use Amazon SES email service for production environment.
+- [x] Use Amazon SES email service for production environment.
 - [ ] Sending of emails must happen in background (background job).
 
 ** RN **
