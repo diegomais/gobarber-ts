@@ -39,7 +39,7 @@
 
 ** RNF **
 
-- [ ] Provider's schedules for the day must be stored in cache.
+- [x] Provider's schedules for the day must be stored in cache.
 - [x] Provider's notifications must be stored in MongoDB.
 - [ ] Service provider notifications must be sent in real time using Socket.io.
 
