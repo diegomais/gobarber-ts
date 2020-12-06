@@ -58,7 +58,7 @@
 
 ** RNF **
 
-- [ ] List of providers must be cached.
+- [x] List of providers must be cached.
 
 ** RN **
 
