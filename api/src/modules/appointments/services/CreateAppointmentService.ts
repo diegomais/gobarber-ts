@@ -46,11 +46,12 @@ class CreateAppointmentService {
       );
     }
 
-    const findAppointmentInSameTime = await this.appointmentsRepository.findByDate(
+    const checkAppointmentAtSameTimeAndProvider = await this.appointmentsRepository.findByDateAndProvider(
       appointmentDate,
+      provider_id,
     );
 
-    if (findAppointmentInSameTime) {
+    if (checkAppointmentAtSameTimeAndProvider) {
       throw new AppError('This time is already booked.');
     }
 
