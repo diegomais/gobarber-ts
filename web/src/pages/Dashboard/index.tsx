@@ -3,6 +3,7 @@ import { FiClock, FiPower } from 'react-icons/fi';
 import logoImg from '../../assets/logo.svg';
 import { useAuth } from '../../contexts/auth';
 import {
+  Appointment,
   Calendar,
   Container,
   Content,
@@ -11,6 +12,7 @@ import {
   NextAppointment,
   Profile,
   Schedule,
+  Section,
 } from './styles';
 
 const Dashboard: React.FC = () => {
@@ -62,6 +64,59 @@ const Dashboard: React.FC = () => {
               </span>
             </div>
           </NextAppointment>
+
+          <Section>
+            <strong>Manhã</strong>
+
+            <Appointment>
+              <span>
+                <FiClock />
+                08:00
+              </span>
+
+              <div>
+                <img
+                  src="https://avatars2.githubusercontent.com/u/40746974?v=4"
+                  alt="Diego Mais"
+                />
+                <strong>Diego Mais</strong>
+              </div>
+            </Appointment>
+
+            <Appointment>
+              <span>
+                <FiClock />
+                11:00
+              </span>
+
+              <div>
+                <img
+                  src="https://avatars2.githubusercontent.com/u/40746974?v=4"
+                  alt="Diego Mais"
+                />
+                <strong>Diego Mais</strong>
+              </div>
+            </Appointment>
+          </Section>
+
+          <Section>
+            <strong>Tarde</strong>
+
+            <Appointment>
+              <span>
+                <FiClock />
+                16:00
+              </span>
+
+              <div>
+                <img
+                  src="https://avatars2.githubusercontent.com/u/40746974?v=4"
+                  alt="Diego Mais"
+                />
+                <strong>Diego Mais</strong>
+              </div>
+            </Appointment>
+          </Section>
         </Schedule>
 
         <Calendar />

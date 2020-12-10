@@ -1,5 +1,49 @@
 import styled from 'styled-components';
 
+export const Appointment = styled.div`
+  display: flex;
+  align-items: center;
+
+  & + div {
+    margin-top: 16px;
+  }
+
+  span {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    color: #f4ede8;
+    width: 70px;
+
+    svg {
+      color: #ff9000;
+      margin-right: 8px;
+    }
+  }
+
+  div {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    margin-left: 24px;
+    padding: 16px 24px;
+    border-radius: 10px;
+    background: #3e3b47;
+
+    img {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+    }
+
+    strong {
+      margin-left: 24px;
+      color: #fff;
+      font-size: 20px;
+    }
+  }
+`;
+
 export const Calendar = styled.aside`
   width: 380px;
 `;
@@ -148,5 +192,19 @@ export const Schedule = styled.div`
       background: #ff9000;
       margin: 0 8px;
     }
+  }
+`;
+
+export const Section = styled.section`
+  margin-top: 48px;
+
+  > strong {
+    color: #999591;
+    font-size: 20px;
+    line-height: 26px;
+    border-bottom: 1px solid #3e3b47;
+    display: block;
+    padding-bottom: 16px;
+    margin-bottom: 16px;
   }
 `;
