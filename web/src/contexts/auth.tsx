@@ -35,6 +35,8 @@ export const AuthProvider: React.FC = ({ children }) => {
     const token = localStorage.getItem('@GoBarber:token');
 
     if (user && token) {
+      api.defaults.headers.authorization = `Bearer ${token}`;
+
       return { user: JSON.parse(user), token };
     }
 
@@ -45,6 +47,8 @@ export const AuthProvider: React.FC = ({ children }) => {
     const response = await api.post('sessions', { email, password });
 
     const { user, token } = response.data;
+
+    api.defaults.headers.authorization = `Bearer ${token}`;
 
     localStorage.setItem('@GoBarber:user', JSON.stringify(user));
     localStorage.setItem('@GoBarber:token', token);
