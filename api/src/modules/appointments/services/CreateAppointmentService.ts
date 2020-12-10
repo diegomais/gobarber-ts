@@ -37,13 +37,11 @@ class CreateAppointmentService {
     }
 
     if (getHours(appointmentDate) < 8 || getHours(appointmentDate) > 17) {
-      throw new AppError('You can not create an appointment on a past date.');
+      throw new AppError('You can only create appointments between 8 am and 5 pm.');
     }
 
     if (customer_id === provider_id) {
-      throw new AppError(
-        'You can only create appointments between 8 am and 5 pm.',
-      );
+      throw new AppError('You can not create an appointment with yourself.');
     }
 
     const checkAppointmentAtSameTimeAndProvider = await this.appointmentsRepository.findByDateAndProvider(
