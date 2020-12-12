@@ -12,7 +12,7 @@ export const AvatarInput = styled.div`
     border-radius: 50%;
   }
 
-  button {
+  label {
     position: absolute;
     bottom: 0;
     right: 0;
@@ -34,6 +34,10 @@ export const AvatarInput = styled.div`
       color: #312e38;
       height: 20px;
       width: 20px;
+    }
+
+    input {
+      display: none;
     }
   }
 `;
