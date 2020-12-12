@@ -138,7 +138,7 @@ const Dashboard: React.FC = () => {
             <img src={user.avatar_url || mysteryPerson} alt={user.name} />
 
             <div>
-              <span>Bem-vindo,</span>
+              <span>Welcome,</span>
               <Link to="/profile">
                 <strong>{user.name}</strong>
               </Link>
@@ -153,7 +153,7 @@ const Dashboard: React.FC = () => {
 
       <Content>
         <Schedule>
-          <h1>Horários agendados</h1>
+          <h1>Scheduled times</h1>
           <p>
             {isToday(selectedDate) && <span>Today</span>}
             <span>{selectedDateAsText}</span>
@@ -162,7 +162,7 @@ const Dashboard: React.FC = () => {
 
           {isToday(selectedDate) && nextAppointment && (
             <NextAppointment>
-              <strong>Atendimento a seguir</strong>
+              <strong>Next appointment</strong>
               <div>
                 <img
                   src={nextAppointment.customer.avatar_url || mysteryPerson}
@@ -178,10 +178,10 @@ const Dashboard: React.FC = () => {
           )}
 
           <Section>
-            <strong>Manhã</strong>
+            <strong>Morning</strong>
 
             {morningAppointments.length === 0 && (
-              <p>Nenhum agendamento neste período.</p>
+              <p>No appointments in this period.</p>
             )}
 
             {morningAppointments.map(({ customer, hour, id }) => (
@@ -203,10 +203,10 @@ const Dashboard: React.FC = () => {
           </Section>
 
           <Section>
-            <strong>Tarde</strong>
+            <strong>Afternoon</strong>
 
             {afternoonAppointments.length === 0 && (
-              <p>Nenhum agendamento neste período.</p>
+              <p>No appointments in this period.</p>
             )}
 
             {afternoonAppointments.map(({ customer, hour, id }) => (
