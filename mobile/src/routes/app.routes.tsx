@@ -1,10 +1,10 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import AppointmentCreated from '../pages/AppointmentCreated';
-import Dashboard from '../pages/Dashboard';
-import CreateAppointment from '../pages/CreateAppointment';
-import Profile from '../pages/Profile';
+import AppointmentCreated from '../screens/AppointmentCreated';
+import Dashboard from '../screens/Dashboard';
+import CreateAppointment from '../screens/CreateAppointment';
+import Profile from '../screens/Profile';
 
 const App = createStackNavigator();
 
