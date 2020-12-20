@@ -1,9 +1,10 @@
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { Platform } from 'react-native';
+import { Alert, Platform } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import { format } from 'date-fns';
+import Button from '../../components/Button';
 import api from '../../services/api';
 import { useAuth } from '../../contexts/auth';
 import {
@@ -23,6 +24,7 @@ import {
   Section,
   SectionContent,
   SectionHeader,
+  Submit,
   Time,
   TimeText,
   UserAvatar,
@@ -51,7 +53,7 @@ interface RouteParams {
 
 const CreateAppointment: React.FC = () => {
   const { user } = useAuth();
-  const { goBack } = useNavigation();
+  const { goBack, navigate } = useNavigation();
   const route = useRoute();
   const { providerId } = route.params as RouteParams;
   const [providers, setProviders] = useState<Provider[]>([]);
@@ -83,6 +85,29 @@ const CreateAppointment: React.FC = () => {
         setAvailability(response.data);
       });
   }, [selectedDate, selectedProvider]);
+
+  const handleCreateAppointment = useCallback(async () => {
+    try {
+      const date = new Date(selectedDate);
+      date.setHours(selectedTime);
+      date.setMinutes(0);
+
+      await api.post('/appointments', {
+        provider_id: selectedProvider,
+        date,
+      });
+
+      navigate('AppointmentCreated', {
+        date: date.getTime(),
+        provider: providers.find(provider => provider.id === selectedProvider),
+      });
+    } catch (err) {
+      Alert.alert(
+        'Error booking',
+        'An error occurred while trying to create the schedule, check the data and try again!',
+      );
+    }
+  }, [providers, selectedDate, selectedProvider, selectedTime, navigate]);
 
   const handleSelectProvider = useCallback((id: string) => {
     setSelectedProvider(id);
@@ -216,6 +241,10 @@ const CreateAppointment: React.FC = () => {
           </SectionContent>
         </Section>
       </Schedule>
+
+      <Submit>
+        <Button onPress={handleCreateAppointment}>Book</Button>
+      </Submit>
     </Container>
   );
 };

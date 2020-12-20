@@ -120,6 +120,10 @@ export const SectionContent = styled.ScrollView.attrs({
   showsHorizontalScrollIndicator: false,
 })``;
 
+export const Submit = styled.View`
+  padding: 0 24px 24px 24px;
+`;
+
 export const Time = styled(RectButton).attrs((props: TimeProps) => ({
   enabled: props.available,
 }))<TimeProps>`
