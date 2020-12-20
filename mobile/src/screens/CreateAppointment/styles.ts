@@ -12,6 +12,15 @@ interface ProviderNameProps {
   selected: boolean;
 }
 
+interface TimeProps {
+  available: boolean;
+  selected: boolean;
+}
+
+interface TimeTextProps {
+  selected: boolean;
+}
+
 export const BackButton = styled.TouchableOpacity``;
 
 export const Calendar = styled.View``;
@@ -81,11 +90,50 @@ export const ProviderName = styled.Text<ProviderNameProps>`
   color: ${({ selected }) => (selected ? '#232129' : '#f4ede8')};
 `;
 
-export const UserAvatar = styled.Image`
-  border-radius: 26px;
-  height: 56px;
-  width: 56px;
-  margin-left: auto;
+export const Schedule = styled.View`
+  padding: 24px 0 16px;
+`;
+
+export const ScheduleHeader = styled.Text`
+  color: #f4ede8;
+  font-family: 'RobotoSlab-Medium';
+  font-size: 24px;
+  margin: 0 24px 24px;
+`;
+
+export const Section = styled.View`
+  margin-bottom: 24px;
+`;
+
+export const SectionHeader = styled.Text`
+  color: #999591;
+  font-family: 'RobotoSlab-Regular';
+  font-size: 18px;
+  margin: 0 24px 12px;
+`;
+
+export const SectionContent = styled.ScrollView.attrs({
+  contentContainerStyle: {
+    paddingHorizontal: 24,
+  },
+  horizontal: true,
+  showsHorizontalScrollIndicator: false,
+})``;
+
+export const Time = styled(RectButton).attrs((props: TimeProps) => ({
+  enabled: props.available,
+}))<TimeProps>`
+  border-radius: 10px;
+  margin-right: 8px;
+  padding: 12px;
+  background-color: ${({ selected }) => (selected ? '#ff9000' : '#3e3b47')};
+  opacity: ${({ available }) => (available ? 1 : 0.3)};
+`;
+
+export const TimeText = styled.Text<TimeTextProps>`
+  color: ${({ selected }) => (selected ? '#232129' : '#f4ede8')};
+  font-family: 'RobotoSlab-Regular';
+  font-size: 18px;
 `;
 
 export const ToggleDatePickerButton = styled(RectButton)`
@@ -101,4 +149,11 @@ export const ToggleDatePickerButtonText = styled.Text`
   font-family: 'RobotoSlab-Medium';
   font-size: 16px;
   color: #232129;
+`;
+
+export const UserAvatar = styled.Image`
+  border-radius: 26px;
+  height: 56px;
+  width: 56px;
+  margin-left: auto;
 `;
