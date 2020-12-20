@@ -10,6 +10,8 @@ import {
   TextInput,
   View,
 } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import { launchImageLibrary } from 'react-native-image-picker';
 import Icon from 'react-native-vector-icons/Feather';
 import * as Yup from 'yup';
 import Button from '../../components/Button';
@@ -96,6 +98,32 @@ const Profile: React.FC = () => {
     [updateUser],
   );
 
+  const handleUpdateAvatar = useCallback(() => {
+    launchImageLibrary(
+      { mediaType: 'photo', maxWidth: 320, maxHeight: 320 },
+      response => {
+        if (response.didCancel) {
+          return;
+        }
+
+        if (response.errorCode) {
+          Alert.alert('Error updating your avatar!');
+        }
+
+        const data = new FormData();
+        data.append('avatar', {
+          name: response.fileName,
+          type: response.type,
+          uri: response.uri,
+        });
+
+        api.patch('/users/avatar', data).then(res => {
+          updateUser(res.data);
+        });
+      },
+    );
+  }, [updateUser]);
+
   return (
     <KeyboardAvoidingView
       style={{ flex: 1 }}
@@ -111,7 +139,9 @@ const Profile: React.FC = () => {
             <Icon name="chevron-left" size={24} color="#999591" />
           </BackButton>
 
-          <Avatar source={{ uri: user.avatar_url }} />
+          <TouchableOpacity onPress={handleUpdateAvatar}>
+            <Avatar source={{ uri: user.avatar_url }} />
+          </TouchableOpacity>
 
           <View>
             <Header>Profile</Header>
