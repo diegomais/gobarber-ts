@@ -1,10 +1,14 @@
+import DateTimePicker from '@react-native-community/datetimepicker';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import React, { useCallback, useEffect, useState } from 'react';
+import { Platform } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import api from '../../services/api';
 import { useAuth } from '../../contexts/auth';
 import {
   BackButton,
+  Calendar,
+  CalendarHeader,
   Container,
   Header,
   HeaderText,
@@ -14,6 +18,8 @@ import {
   ProviderContainer,
   ProviderName,
   UserAvatar,
+  ToggleDatePickerButton,
+  ToggleDatePickerButtonText,
 } from './styles';
 
 export interface Provider {
@@ -35,8 +41,10 @@ const CreateAppointment: React.FC = () => {
   const { goBack } = useNavigation();
   const route = useRoute();
   const { providerId } = route.params as RouteParams;
-  const [selectedProvider, setSelectedProvider] = useState<string>(providerId);
   const [providers, setProviders] = useState<Provider[]>([]);
+  const [selectedProvider, setSelectedProvider] = useState(providerId);
+  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [showDatePicker, setShowDatePicker] = useState(false);
 
   useEffect(() => {
     api.get<Provider[]>('/providers').then(response => {
@@ -46,6 +54,20 @@ const CreateAppointment: React.FC = () => {
 
   const handleSelectProvider = useCallback((id: string) => {
     setSelectedProvider(id);
+  }, []);
+
+  const handleSelectDate = useCallback((event, date: Date | undefined) => {
+    if (Platform.OS === 'android') {
+      setShowDatePicker(false);
+    }
+
+    if (date) {
+      setSelectedDate(date);
+    }
+  }, []);
+
+  const handleToggleDatePicker = useCallback(() => {
+    setShowDatePicker(prevState => !prevState);
   }, []);
 
   const handleGoBack = useCallback(() => {
@@ -81,6 +103,25 @@ const CreateAppointment: React.FC = () => {
           )}
         />
       </ProvidersListContainer>
+
+      <Calendar>
+        <CalendarHeader>Choose the date</CalendarHeader>
+
+        <ToggleDatePickerButton onPress={handleToggleDatePicker}>
+          <ToggleDatePickerButtonText>Pick a date</ToggleDatePickerButtonText>
+        </ToggleDatePickerButton>
+
+        {showDatePicker && (
+          <DateTimePicker
+            mode="date"
+            display="spinner"
+            value={selectedDate}
+            textColor="#f4ede8"
+            onChange={handleSelectDate}
+            minimumDate={new Date()}
+          />
+        )}
+      </Calendar>
     </Container>
   );
 };

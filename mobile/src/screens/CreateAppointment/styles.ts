@@ -14,6 +14,15 @@ interface ProviderNameProps {
 
 export const BackButton = styled.TouchableOpacity``;
 
+export const Calendar = styled.View``;
+
+export const CalendarHeader = styled.Text`
+  font-family: 'RobotoSlab-Medium';
+  color: #f4ede8;
+  font-size: 24px;
+  margin: 0 24px 24px;
+`;
+
 export const Container = styled.View`
   flex: 1;
 `;
@@ -77,4 +86,19 @@ export const UserAvatar = styled.Image`
   height: 56px;
   width: 56px;
   margin-left: auto;
+`;
+
+export const ToggleDatePickerButton = styled(RectButton)`
+  height: 46px;
+  background-color: #ff9000;
+  border-radius: 10px;
+  align-items: center;
+  justify-content: center;
+  margin: 0 24px;
+`;
+
+export const ToggleDatePickerButtonText = styled.Text`
+  font-family: 'RobotoSlab-Medium';
+  font-size: 16px;
+  color: #232129;
 `;
