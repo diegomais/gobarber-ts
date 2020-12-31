@@ -6,6 +6,7 @@
 <p align="center">
   <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/diegomais/gobarber-ts?style=for-the-badge">
   <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/diegomais/gobarber-ts?style=for-the-badge">
+  <img alt="JavaScript Style Guide" src="https://img.shields.io/badge/JavaScript%20Style%20Guide-Airbnb-red?style=for-the-badge">
   <img alt="GitHub license" src="https://img.shields.io/github/license/diegomais/gobarber-ts?style=for-the-badge">
   <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/diegomais/gobarber-ts?style=for-the-badge">
 </p>
@@ -41,60 +42,44 @@ Extras:
 
 These instructions will get you a copy of the full project up and running on your local machine for development and testing purposes.
 
-#### Setting up the development environment
+### Prerequisites
 
-The project is developed using Git. Git is a free and open source distributed version control system. [Download Git](https://git-scm.com/downloads).
+You will need to install [Git](https://git-scm.com/downloads), [Docker Desktop](https://www.docker.com/products/docker-desktop) and [Docker Compose](https://docs.docker.com/compose/install/) before following the instructions below.
+
+### Installation using Docker Compose
+
+The following steps need to be performed inside a terminal window (Windows user may prefer to use the [Windows Terminal](https://aka.ms/windowsterminal) but the Command Prompt will also work).
+
+Clone the repository and build Docker images:
+
+```
+git clone https://github.com/diegomais/gobarber-ts.git
+cd gobarber-ts
+docker-compose build
+```
+
+Apply database migrations, collect static assets:
+
+```
+docker-compose run --rm api yarn typeorm migration:run
+```
+
+### Running the services
+
+Use the following command to run all GoBarber containers (from within the gobarber-ts directory):
+
+```
+docker-compose up
+```
+
+### Mobile
+
+#### Prerequisites
 
 The project can be built with npm or Yarn, so choose one of the approach bellow in case you don't have any installed on your system.
 
 - **npm** is distributed with Node.js which means that when you download Node.js, you automatically get npm installed on your computer. [Download Node.js](https://nodejs.org/en/download/).
 - **Yarn** is a package manager built by Facebook Team and seems to be faster than npm in general. [Download Yarn](https://yarnpkg.com/en/docs/install).
-
-#### Cloning the project
-
-You can obtain the project by running the instruction bellow on your terminal:
-
-`git clone https://github.com/diegomais/gobarber-ts.git`
-
-#### Setting up Databases and Services
-
-The project uses [PostgreSQL](https://www.postgresql.org), [MongoDB](https://www.mongodb.com) and [Redis](https://redis.io).
-
-We recommend use [Docker](https://www.docker.com) to install and run the databases and services above.
-
-1. Install [Docker Desktop](https://www.docker.com/get-started).
-2. Start a PostgreSQL instance:
-   `docker run --name gobarber-pg -e POSTGRES_PASSWORD=mysecretpassword -p 5432:5432 -d postgres`
-
-### API
-
-#### Installing dependencies and running the server
-
-Run the instructions bellow inside `api` directory:
-
-1. `npm install`
-2. `npm run dev:server`
-
-or
-
-1. `yarn install`
-2. `yarn dev:server`
-
-### Web
-
-#### Installing dependencies and running the web application
-
-Run the instructions bellow inside `web` directory:
-
-1. `npm install`
-2. `npm start`
-
-or
-
-1. `yarn install`
-2. `yarn start`
-
-### Mobile
 
 #### Setting up the development environment
 
@@ -104,13 +89,17 @@ Follow the instructions for React Native CLI available in the official [React Na
 
 Run the instructions bellow inside `mobile` directory:
 
-1. `npm install`
-2. `npm start`
+```
+npm install
+npm start
+```
 
 or
 
-1. `yarn install`
-2. `yarn start`
+```
+yarn install
+yarn start
+```
 
 ## :thinking: How to contribute
 
