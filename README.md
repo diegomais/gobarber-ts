@@ -8,6 +8,9 @@
   <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/diegomais/gobarber-ts?style=for-the-badge">
   <img alt="JavaScript Style Guide" src="https://img.shields.io/badge/JavaScript%20Style%20Guide-Airbnb-red?style=for-the-badge">
   <img alt="GitHub license" src="https://img.shields.io/github/license/diegomais/gobarber-ts?style=for-the-badge">
+  <img alt="API CI" src="https://img.shields.io/github/workflow/status/diegomais/gobarber-ts/API%20CI?label=API%20CI&style=for-the-badge">
+  <img alt="Mobile App CI" src="https://img.shields.io/github/workflow/status/diegomais/gobarber-ts/Mobile%20App%20CI?label=Mobile%20App%20CI&style=for-the-badge">
+  <img alt="Web App CI" src="https://img.shields.io/github/workflow/status/diegomais/gobarber-ts/Web%20App%20CI?label=Web%20App%20CI&style=for-the-badge">
   <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/diegomais/gobarber-ts?style=for-the-badge">
 </p>
 
