@@ -1,0 +1,63 @@
+name: Mobile App CI
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+    - 'mobile/**'
+
+  pull_request:
+    branches: [ main ]
+    paths:
+    - 'mobile/**'
+
+  workflow_dispatch:
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        shell: bash
+        working-directory: mobile
+
+    strategy:
+      matrix:
+        node-version: [10.x, 12.x, 14.x, 15.x]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+
+    - name: Install dependencies
+      run: yarn install --frozen-lockfile
+
+    - name: Build
+      run: yarn build
+
+    - name: Test
+      run: yarn test
+
+    - name: Cache Gradle Wrapper
+      uses: actions/cache@v2
+      with:
+        path: ~/.gradle/wrapper
+        key: ${{ runner.os }}-gradle-wrapper-${{ hashFiles('gradle/wrapper/gradle-wrapper.properties') }}
+
+    - name: Cache Gradle Dependencies
+      uses: actions/cache@v2
+      with:
+        path: ~/.gradle/caches
+        key: ${{ runner.os }}-gradle-caches-${{ hashFiles('gradle/wrapper/gradle-wrapper.properties') }}
+        restore-keys: ${{ runner.os }}-gradle-caches-
+
+    - name: Make Gradlew Executable
+      run: cd android && chmod +x ./gradlew
+
+    - name: Build Android App Bundle
+      run: cd android && ./gradlew bundleRelease --no-daemon
