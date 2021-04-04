@@ -24,9 +24,9 @@
     "axios": "0.21.1",
     "date-fns": "2.16.1",
     "polished": "3.5.2",
-    "react": "16.13.1",
+    "react": "16.14.0",
     "react-day-picker": "7.4.8",
-    "react-dom": "16.13.1",
+    "react-dom": "16.14.0",
     "react-icons": "3.10.0",
     "react-router-dom": "5.1.2",
     "react-scripts": "3.4.1",
@@ -54,7 +54,7 @@
     "eslint-plugin-react": "7.23.1",
     "eslint-plugin-react-hooks": "2.5.1",
     "prettier": "2.2.1",
-    "react-test-renderer": "17.0.1"
+    "react-test-renderer": "17.0.2"
   },
   "eslintConfig": {
     "extends": "react-app"
