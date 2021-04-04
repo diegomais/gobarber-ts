@@ -18,6 +18,9 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    env:
+      working-directory: api
+
     strategy:
       matrix:
         node-version: [10.x, 12.x, 14.x, 15.x]
@@ -28,7 +31,6 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: cd api
     - name: Install Dependencies
       run: yarn install --frozen-lockfile
     - name: Build
