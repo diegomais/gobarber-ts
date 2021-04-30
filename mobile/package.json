@@ -19,7 +19,7 @@
     "@unform/mobile": "2.1.3",
     "axios": "0.21.1",
     "date-fns": "2.16.1",
-    "react": "16.14.0",
+    "react": "17.0.2",
     "react-native": "0.63.4",
     "react-native-gesture-handler": "1.9.0",
     "react-native-image-picker": "3.1.4",
@@ -34,7 +34,7 @@
   "devDependencies": {
     "@babel/core": "7.12.10",
     "@babel/runtime": "7.12.5",
-    "@react-native-community/eslint-config": "1.1.0",
+    "@react-native-community/eslint-config": "2.0.0",
     "@testing-library/jest-native": "3.4.3",
     "@testing-library/react-native": "7.1.0",
     "@types/jest": "25.2.3",
@@ -53,11 +53,11 @@
     "eslint-plugin-jsx-a11y": "6.4.1",
     "eslint-plugin-prettier": "3.4.0",
     "eslint-plugin-react": "7.23.2",
-    "eslint-plugin-react-hooks": "2.5.1",
+    "eslint-plugin-react-hooks": "4.2.0",
     "jest": "25.5.4",
     "metro-react-native-babel-preset": "0.59.0",
     "prettier": "2.2.1",
-    "react-test-renderer": "16.13.1",
+    "react-test-renderer": "17.0.2",
     "typescript": "3.9.7"
   },
   "jest": {
