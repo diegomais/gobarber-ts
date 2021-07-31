@@ -19,15 +19,15 @@ services:
       - /app/node_modules/
     command: yarn dev:server -- --host 0.0.0.0
 
-  web:
+  frontend:
     build:
-      context: ./web
+      context: ./frontend
       dockerfile: ./Dockerfile
     ports:
       - 3000:3000
     restart: unless-stopped
     volumes:
-      - ./web/:/app/
+      - ./frontend/:/app/
       - /app/node_modules/
     command: yarn start -- --host 0.0.0.0
     stdin_open: true
