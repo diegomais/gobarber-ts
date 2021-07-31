@@ -1,4 +1,58 @@
 {
+  "name": "gobarber",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "react-scripts build",
+    "eject": "react-scripts eject",
+    "start": "react-scripts start",
+    "test": "react-scripts test"
+  },
+  "dependencies": {
+    "@unform/core": "2.1.0",
+    "@unform/web": "2.1.0",
+    "axios": "0.21.1",
+    "date-fns": "2.16.1",
+    "polished": "3.5.2",
+    "react": "17.0.2",
+    "react-day-picker": "7.4.10",
+    "react-dom": "17.0.2",
+    "react-icons": "3.10.0",
+    "react-router-dom": "5.1.2",
+    "react-scripts": "4.0.3",
+    "react-spring": "8.0.27",
+    "styled-components": "5.1.0",
+    "uuidv4": "6.0.8",
+    "yup": "0.28.4"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "5.11.4",
+    "@testing-library/react": "11.1.0",
+    "@testing-library/react-hooks": "3.7.0",
+    "@testing-library/user-event": "12.1.10",
+    "@types/jest": "26.0.15",
+    "@types/node": "12.20.17",
+    "@types/react": "17.0.15",
+    "@types/react-dom": "17.0.9",
+    "@types/react-router-dom": "5.1.7",
+    "@types/styled-components": "5.1.0",
+    "@types/yup": "0.28.0",
+    "@typescript-eslint/eslint-plugin": "2.34.0",
+    "@typescript-eslint/parser": "2.34.0",
+    "axios-mock-adapter": "1.19.0",
+    "eslint": "7.11.0",
+    "eslint-config-airbnb": "18.2.1",
+    "eslint-config-prettier": "6.15.0",
+    "eslint-import-resolver-typescript": "2.4.0",
+    "eslint-plugin-import": "2.22.1",
+    "eslint-plugin-jsx-a11y": "6.4.1",
+    "eslint-plugin-prettier": "3.4.0",
+    "eslint-plugin-react": "7.23.2",
+    "eslint-plugin-react-hooks": "2.5.1",
+    "prettier": "2.2.1",
+    "react-test-renderer": "17.0.1",
+    "typescript": "4.1.2"
+  },
   "browserslist": {
     "development": [
       "last 1 chrome version",
@@ -11,53 +65,11 @@
       "not op_mini all"
     ]
   },
-  "dependencies": {
-    "@testing-library/jest-dom": "4.2.4",
-    "@testing-library/react": "9.5.0",
-    "@testing-library/user-event": "7.2.1",
-    "@types/jest": "24.9.1",
-    "@types/node": "12.20.7",
-    "@types/react": "16.9.34",
-    "@types/react-dom": "16.9.6",
-    "@unform/core": "2.1.0",
-    "@unform/web": "2.1.0",
-    "axios": "0.21.1",
-    "date-fns": "2.16.1",
-    "polished": "3.5.2",
-    "react": "16.13.1",
-    "react-day-picker": "7.4.8",
-    "react-dom": "16.13.1",
-    "react-icons": "3.10.0",
-    "react-router-dom": "5.1.2",
-    "react-scripts": "4.0.3",
-    "react-spring": "8.0.27",
-    "styled-components": "5.1.0",
-    "typescript": "3.7.5",
-    "uuidv4": "6.0.8",
-    "yup": "0.28.4"
-  },
-  "devDependencies": {
-    "@testing-library/react-hooks": "3.7.0",
-    "@types/react-router-dom": "5.1.7",
-    "@types/styled-components": "5.1.0",
-    "@types/yup": "0.28.0",
-    "@typescript-eslint/eslint-plugin": "2.34.0",
-    "@typescript-eslint/parser": "2.34.0",
-    "axios-mock-adapter": "1.19.0",
-    "eslint": "6.8.0",
-    "eslint-config-airbnb": "18.2.1",
-    "eslint-config-prettier": "6.15.0",
-    "eslint-import-resolver-typescript": "2.4.0",
-    "eslint-plugin-import": "2.22.1",
-    "eslint-plugin-jsx-a11y": "6.4.1",
-    "eslint-plugin-prettier": "3.4.0",
-    "eslint-plugin-react": "7.23.2",
-    "eslint-plugin-react-hooks": "2.5.1",
-    "prettier": "2.2.1",
-    "react-test-renderer": "17.0.1"
-  },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   },
   "jest": {
     "collectCoverageFrom": [
@@ -66,14 +78,5 @@
       "!src/contexts/index.tsx",
       "src/pages/**/*.tsx"
     ]
-  },
-  "name": "gobarber",
-  "private": true,
-  "scripts": {
-    "build": "react-scripts build",
-    "eject": "react-scripts eject",
-    "start": "react-scripts start",
-    "test": "react-scripts test"
-  },
-  "version": "0.1.0"
+  }
 }

@@ -4,6 +4,13 @@ import ListProviderMonthAvailabilityService from './ListProviderMonthAvailabilit
 let fakeAppointmentRepository: FakeAppointmentRepository;
 let listProviderMonthAvailabilityService: ListProviderMonthAvailabilityService;
 
+beforeAll(() => {
+  jest.useFakeTimers('modern');
+  jest.setSystemTime(new Date('2020-10-18T00:00:00.000Z'));
+});
+afterAll(() => {
+  jest.useRealTimers();
+});
 describe('ListProviderMonthAvailability', () => {
   beforeEach(() => {
     fakeAppointmentRepository = new FakeAppointmentRepository();
