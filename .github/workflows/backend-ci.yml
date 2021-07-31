@@ -1,15 +1,15 @@
-name: API CI
+name: Backend CI
 
 on:
   push:
     branches: [ main ]
     paths:
-    - 'api/**'
+    - 'backend/**'
 
   pull_request:
     branches: [ main ]
     paths:
-    - 'api/**'
+    - 'backend/**'
 
   workflow_dispatch:
 
@@ -21,7 +21,7 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: api
+        working-directory: backend
 
     strategy:
       matrix:

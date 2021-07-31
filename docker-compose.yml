@@ -1,9 +1,9 @@
-version: "3.8"
+version: '3.8'
 
 services:
-  api:
+  backend:
     build:
-      context: ./api
+      context: ./backend
       dockerfile: ./Dockerfile
     ports:
       - 3333:3333
@@ -15,7 +15,7 @@ services:
       - mongo
       - redis
     volumes:
-      - ./api/:/app/
+      - ./backend/:/app/
       - /app/node_modules/
     command: yarn dev:server -- --host 0.0.0.0
 
