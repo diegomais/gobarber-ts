@@ -29,7 +29,7 @@ module.exports = {
     '@typescript-eslint', 'prettier'
   ],
   rules: {
-    '@typescript-eslint/camelcase': 'off',
+    camelcase: 'off',
     'import/prefer-default-export': 'off',
     'no-unused-expressions': 'off',
     'prettier/prettier': 'error',
