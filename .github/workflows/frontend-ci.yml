@@ -1,15 +1,15 @@
-name: API CI
+name: Frontend CI
 
 on:
   push:
     branches: [ main ]
     paths:
-    - 'api/**'
+    - 'frontend/**'
 
   pull_request:
     branches: [ main ]
     paths:
-    - 'api/**'
+    - 'frontend/**'
 
   workflow_dispatch:
 
@@ -21,7 +21,7 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: api
+        working-directory: frontend
 
     strategy:
       matrix:
