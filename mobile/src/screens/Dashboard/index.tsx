@@ -1,25 +1,11 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useCallback, useEffect, useState } from 'react';
-import Icon from 'react-native-vector-icons/Feather';
+import { Feather } from '@expo/vector-icons';
+
 import api from '../../services/api';
 import { useAuth } from '../../contexts/auth';
 
-import {
-  Container,
-  Header,
-  HeaderText,
-  ProfileButton,
-  ProvidersList,
-  ProvidersListHeader,
-  ProviderContainer,
-  ProviderAvatar,
-  ProviderInfo,
-  ProviderName,
-  ProviderMeta,
-  ProviderMetaText,
-  UserAvatar,
-  UserName,
-} from './styles';
+import * as S from './styles';
 
 export interface Provider {
   avatar: string;
@@ -31,7 +17,7 @@ export interface Provider {
   updated_at: string;
 }
 
-const Dashboard: React.FC = () => {
+const Dashboard = () => {
   const [providers, setProviders] = useState<Provider[]>([]);
   const { user } = useAuth();
   const { navigate } = useNavigation();
@@ -54,40 +40,40 @@ const Dashboard: React.FC = () => {
   }, [navigate]);
 
   return (
-    <Container>
-      <Header>
-        <HeaderText>
+    <S.Container>
+      <S.Header>
+        <S.HeaderText>
           Welcome,
           {'\n'}
-          <UserName>{user.name}</UserName>
-        </HeaderText>
-        <ProfileButton onPress={navigateToProfile}>
-          <UserAvatar source={{ uri: user.avatar_url }} />
-        </ProfileButton>
-      </Header>
+          <S.UserName>{user.name}</S.UserName>
+        </S.HeaderText>
+        <S.ProfileButton onPress={navigateToProfile}>
+          <S.UserAvatar source={{ uri: user.avatar_url }} />
+        </S.ProfileButton>
+      </S.Header>
 
-      <ProvidersList
+      <S.ProvidersList
         data={providers}
         keyExtractor={provider => provider.id}
-        ListHeaderComponent={<ProvidersListHeader>Barber</ProvidersListHeader>}
+        ListHeaderComponent={<S.ProvidersListHeader>Barber</S.ProvidersListHeader>}
         renderItem={({ item: provider }) => (
-          <ProviderContainer onPress={() => handleSelectProvider(provider.id)}>
-            <ProviderAvatar source={{ uri: provider.avatar_url }} />
-            <ProviderInfo>
-              <ProviderName>{provider.name}</ProviderName>
-              <ProviderMeta>
-                <Icon name="calendar" size={14} color="#ff9000" />
-                <ProviderMetaText>Monday to Friday</ProviderMetaText>
-              </ProviderMeta>
-              <ProviderMeta>
-                <Icon name="clock" size={14} color="#ff9000" />
-                <ProviderMetaText>8am to 6pm</ProviderMetaText>
-              </ProviderMeta>
-            </ProviderInfo>
-          </ProviderContainer>
+          <S.ProviderContainer onPress={() => handleSelectProvider(provider.id)}>
+            <S.ProviderAvatar source={{ uri: provider.avatar_url }} />
+            <S.ProviderInfo>
+              <S.ProviderName>{provider.name}</S.ProviderName>
+              <S.ProviderMeta>
+                <Feather name="calendar" size={14} color="#ff9000" />
+                <S.ProviderMetaText>Monday to Friday</S.ProviderMetaText>
+              </S.ProviderMeta>
+              <S.ProviderMeta>
+                <Feather name="clock" size={14} color="#ff9000" />
+                <S.ProviderMetaText>8am to 6pm</S.ProviderMetaText>
+              </S.ProviderMeta>
+            </S.ProviderInfo>
+          </S.ProviderContainer>
         )}
       />
-    </Container>
+    </S.Container>
   );
 };
 
