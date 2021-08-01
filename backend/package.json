@@ -45,7 +45,7 @@
     "@types/jest": "26.0.24",
     "@types/jsonwebtoken": "8.5.4",
     "@types/mongodb": "3.6.20",
-    "@types/multer": "1.4.5",
+    "@types/multer": "1.4.7",
     "@types/nodemailer": "6.4.4",
     "@typescript-eslint/eslint-plugin": "2.34.0",
     "@typescript-eslint/parser": "2.34.0",
