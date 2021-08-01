@@ -1,3 +1,7 @@
+import { Feather } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
+import { FormHandles } from '@unform/core';
+import { Form } from '@unform/mobile';
 import React, { useCallback, useRef } from 'react';
 import {
   Alert,
@@ -8,20 +12,14 @@ import {
   TextInput,
   View,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/Feather';
 import * as Yup from 'yup';
-import { useNavigation } from '@react-navigation/native';
-import { FormHandles } from '@unform/core';
-import { Form } from '@unform/mobile';
 
 import getValidationErrors from '../../utils/getValidationErrors';
 import api from '../../services/api';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 
-import logoImg from '../../assets/logo.png';
-
-import { Container, Title, BackToSignIn, BackToSignInText } from './styles';
+import * as S from './styles';
 
 interface SignUpFormData {
   name: string;
@@ -29,11 +27,11 @@ interface SignUpFormData {
   password: string;
 }
 
-const SignUp: React.FC = () => {
+const SignUp = () => {
   const formRef = useRef<FormHandles>(null);
   const emailInputRef = useRef<TextInput>(null);
   const passwordInputRef = useRef<TextInput>(null);
-  const navigation = useNavigation();
+  const { goBack } = useNavigation();
 
   const handleSubmit = useCallback(
     async (data: SignUpFormData) => {
@@ -60,7 +58,7 @@ const SignUp: React.FC = () => {
           'Now you can log in to GoBarber!',
         );
 
-        navigation.goBack();
+        goBack();
       } catch (error) {
         if (error instanceof Yup.ValidationError) {
           const errors = getValidationErrors(error);
@@ -75,7 +73,7 @@ const SignUp: React.FC = () => {
         );
       }
     },
-    [navigation],
+    [goBack],
   );
 
   return (
@@ -89,11 +87,11 @@ const SignUp: React.FC = () => {
           contentContainerStyle={{ flex: 1 }}
           keyboardShouldPersistTaps="handled"
         >
-          <Container>
-            <Image source={logoImg} />
+          <S.Container>
+            <Image source={require('../../../assets/logo.png')} />
 
             <View>
-              <Title>Sign up</Title>
+              <S.Title>Sign up</S.Title>
             </View>
 
             <Form onSubmit={handleSubmit} ref={formRef}>
@@ -143,14 +141,14 @@ const SignUp: React.FC = () => {
                 Sign up
               </Button>
             </Form>
-          </Container>
+          </S.Container>
         </ScrollView>
       </KeyboardAvoidingView>
 
-      <BackToSignIn onPress={() => navigation.goBack()}>
-        <Icon color="#f4ede8" name="arrow-left" size={20} />
-        <BackToSignInText>Back to log in</BackToSignInText>
-      </BackToSignIn>
+      <S.BackToSignIn onPress={() => goBack()}>
+        <Feather color="#f4ede8" name="arrow-left" size={20} />
+        <S.BackToSignInText>Back to log in</S.BackToSignInText>
+      </S.BackToSignIn>
     </>
   );
 };

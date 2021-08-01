@@ -26,7 +26,7 @@ export const BackButton = styled.TouchableOpacity``;
 export const Calendar = styled.View``;
 
 export const CalendarHeader = styled.Text`
-  font-family: 'RobotoSlab-Medium';
+  font-family: 'RobotoSlab_500Medium';
   color: #f4ede8;
   font-size: 24px;
   margin: 0 24px 24px;
@@ -48,7 +48,7 @@ export const Header = styled.View`
 
 export const HeaderText = styled.Text`
   color: #f5ede8;
-  font-family: 'RobotoSlab-Medium';
+  font-family: 'RobotoSlab_500Medium';
   font-size: 20px;
   margin-left: 16px;
 `;
@@ -84,7 +84,7 @@ export const ProviderContainer = styled(RectButton)<ProviderContainerProps>`
 `;
 
 export const ProviderName = styled.Text<ProviderNameProps>`
-  font-family: 'RobotoSlab-Medium';
+  font-family: 'RobotoSlab_500Medium';
   font-size: 16px;
   margin-left: 8px;
   color: ${({ selected }) => (selected ? '#232129' : '#f4ede8')};
@@ -96,7 +96,7 @@ export const Schedule = styled.View`
 
 export const ScheduleHeader = styled.Text`
   color: #f4ede8;
-  font-family: 'RobotoSlab-Medium';
+  font-family: 'RobotoSlab_500Medium';
   font-size: 24px;
   margin: 0 24px 24px;
 `;
@@ -107,7 +107,7 @@ export const Section = styled.View`
 
 export const SectionHeader = styled.Text`
   color: #999591;
-  font-family: 'RobotoSlab-Regular';
+  font-family: 'RobotoSlab_400Regular';
   font-size: 18px;
   margin: 0 24px 12px;
 `;
@@ -136,7 +136,7 @@ export const Time = styled(RectButton).attrs((props: TimeProps) => ({
 
 export const TimeText = styled.Text<TimeTextProps>`
   color: ${({ selected }) => (selected ? '#232129' : '#f4ede8')};
-  font-family: 'RobotoSlab-Regular';
+  font-family: 'RobotoSlab_400Regular';
   font-size: 18px;
 `;
 
@@ -150,7 +150,7 @@ export const ToggleDatePickerButton = styled(RectButton)`
 `;
 
 export const ToggleDatePickerButtonText = styled.Text`
-  font-family: 'RobotoSlab-Medium';
+  font-family: 'RobotoSlab_500Medium';
   font-size: 16px;
   color: #232129;
 `;

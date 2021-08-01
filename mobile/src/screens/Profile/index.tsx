@@ -1,6 +1,8 @@
+import { Feather } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { FormHandles } from '@unform/core';
 import { Form } from '@unform/mobile';
+import * as ImagePicker from 'expo-image-picker';
 import React, { useCallback, useRef } from 'react';
 import {
   Alert,
@@ -11,15 +13,15 @@ import {
   View,
 } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { launchImageLibrary } from 'react-native-image-picker';
-import Icon from 'react-native-vector-icons/Feather';
 import * as Yup from 'yup';
+
 import Button from '../../components/Button';
 import Input from '../../components/Input';
 import { useAuth } from '../../contexts/auth';
 import api from '../../services/api';
 import getValidationErrors from '../../utils/getValidationErrors';
-import { Avatar, BackButton, Container, Header, LineBreak } from './styles';
+
+import * as S from './styles';
 
 interface ProfileFormData {
   name: string;
@@ -29,7 +31,7 @@ interface ProfileFormData {
   password_confirmation: string;
 }
 
-const Profile: React.FC = () => {
+const Profile = () => {
   const { user, updateUser } = useAuth();
   const { goBack } = useNavigation();
   const formRef = useRef<FormHandles>(null);
@@ -54,13 +56,13 @@ const Profile: React.FC = () => {
             .email('Enter a valid email.'),
           old_password: Yup.string(),
           password: Yup.string().when('old_password', {
-            is: value => !!value.length,
+            is: (value: string) => !!value.length,
             then: Yup.string().required('Password is required.'),
             otherwise: Yup.string(),
           }),
           password_confirmation: Yup.string()
             .when('old_password', {
-              is: value => !!value.length,
+              is: (value: string) => !!value.length,
               then: Yup.string().required('New password is required.'),
               otherwise: Yup.string(),
             })
@@ -98,30 +100,30 @@ const Profile: React.FC = () => {
     [updateUser],
   );
 
-  const handleUpdateAvatar = useCallback(() => {
-    launchImageLibrary(
-      { mediaType: 'photo', maxWidth: 320, maxHeight: 320 },
-      response => {
-        if (response.didCancel) {
-          return;
-        }
+  const handleUpdateAvatar = useCallback(async () => {
+    const permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
 
-        if (response.errorCode) {
-          Alert.alert('Error updating your avatar!');
-        }
+    if (permissionResult.granted === false) {
+      Alert.alert("Permission to access camera roll is required!");
+      return;
+    }
 
-        const data = new FormData();
-        data.append('avatar', {
-          name: response.fileName,
-          type: response.type,
-          uri: response.uri,
-        });
+    const pickerResult = await ImagePicker.launchImageLibraryAsync();
+    if (pickerResult.cancelled) {
+      Alert.alert('Error updating your avatar!');
+    } else {
 
-        api.patch('/users/avatar', data).then(res => {
-          updateUser(res.data);
-        });
-      },
-    );
+    const data = new FormData();
+      data.append('avatar', {
+        name: pickerResult.uri.split('/').pop(),
+        type: pickerResult.type || 'image',
+        uri: pickerResult.uri,
+      });
+
+      api.patch('/users/avatar', data).then(res => {
+        updateUser(res.data);
+      });
+    }
   }, [updateUser]);
 
   return (
@@ -134,17 +136,17 @@ const Profile: React.FC = () => {
         keyboardShouldPersistTaps="handled"
         contentContainerStyle={{ flex: 1 }}
       >
-        <Container>
-          <BackButton onPress={handleGoBack}>
-            <Icon name="chevron-left" size={24} color="#999591" />
-          </BackButton>
+        <S.Container>
+          <S.BackButton onPress={handleGoBack}>
+            <Feather name="chevron-left" size={24} color="#999591" />
+          </S.BackButton>
 
           <TouchableOpacity onPress={handleUpdateAvatar}>
-            <Avatar source={{ uri: user.avatar_url }} />
+            <S.Avatar source={{ uri: user.avatar_url }} />
           </TouchableOpacity>
 
           <View>
-            <Header>Profile</Header>
+            <S.Header>Profile</S.Header>
           </View>
 
           <Form initialData={user} ref={formRef} onSubmit={handleSaveProfile}>
@@ -177,7 +179,7 @@ const Profile: React.FC = () => {
               }}
             />
 
-            <LineBreak />
+            <S.LineBreak />
 
             <Input
               ref={passwordInputRef}
@@ -215,7 +217,7 @@ const Profile: React.FC = () => {
 
             <Button onPress={() => formRef.current?.submitForm()}>Save</Button>
           </Form>
-        </Container>
+        </S.Container>
       </ScrollView>
     </KeyboardAvoidingView>
   );

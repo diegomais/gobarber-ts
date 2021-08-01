@@ -1,5 +1,5 @@
+import { Feather } from '@expo/vector-icons';
 import styled, { css } from 'styled-components/native';
-import FeatherIcon from 'react-native-vector-icons/Feather';
 
 interface ContainerProps {
   isFocused: boolean;
@@ -32,13 +32,13 @@ export const Container = styled.View<ContainerProps>`
     `}
 `;
 
-export const Icon = styled(FeatherIcon)`
+export const Icon = styled(Feather)`
   margin-right: 16px;
 `;
 
 export const TextInput = styled.TextInput`
   color: #f4ede8;
-  font-family: 'RobotoSlab-Regular';
+  font-family: 'RobotoSlab_400Regular';
   font-size: 16px;
 
   flex: 1;
