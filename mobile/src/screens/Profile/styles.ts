@@ -18,7 +18,7 @@ export const Container = styled.View`
 
 export const Header = styled.Text`
   color: #f4ede8;
-  font-family: 'RobotoSlab-Medium';
+  font-family: 'RobotoSlab_500Medium';
   font-size: 20px;
   margin: 24px 0;
 `;

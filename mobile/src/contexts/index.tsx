@@ -2,7 +2,11 @@ import React from 'react';
 
 import { AuthProvider } from './auth';
 
-const AppProvider: React.FC = ({ children }) => (
+type AppProviderProps = {
+  children: React.ReactNode,
+};
+
+const AppProvider = ({ children }: AppProviderProps) => (
   <AuthProvider>{children}</AuthProvider>
 );
 

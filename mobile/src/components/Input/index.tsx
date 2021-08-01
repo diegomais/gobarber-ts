@@ -1,5 +1,7 @@
+import { useField } from '@unform/core';
 import React, {
   forwardRef,
+  ForwardRefRenderFunction,
   useCallback,
   useEffect,
   useImperativeHandle,
@@ -7,9 +9,8 @@ import React, {
   useState,
 } from 'react';
 import { TextInputProps } from 'react-native';
-import { useField } from '@unform/core';
 
-import { Container, TextInput, Icon } from './styles';
+import * as S from './styles';
 
 interface InputProps extends TextInputProps {
   name: string;
@@ -24,7 +25,7 @@ interface InputValueReference {
   value: string;
 }
 
-const Input: React.RefForwardingComponent<InputRef, InputProps> = (
+const Input: ForwardRefRenderFunction<InputRef, InputProps> = (
   { name, icon, ...rest },
   ref,
 ) => {
@@ -60,26 +61,26 @@ const Input: React.RefForwardingComponent<InputRef, InputProps> = (
   }, [fieldName, registerField]);
 
   return (
-    <Container isFocused={isFocused} hasError={!!error}>
-      <Icon
+    <S.Container isFocused={isFocused} hasError={!!error}>
+      <S.Icon
         color={isFocused || isFilled ? '#ff9000' : '#666360'}
         name={icon}
         size={20}
       />
 
-      <TextInput
+      <S.TextInput
         ref={inputElementRef}
         keyboardAppearance="dark"
         placeholderTextColor="#666360"
         defaultValue={defaultValue}
         onFocus={handleInputFocus}
         onBlur={handleInputBlur}
-        onChangeText={value => {
+        onChangeText={(value: string) => {
           inputValueRef.current.value = value;
         }}
         {...rest}
       />
-    </Container>
+    </S.Container>
   );
 };
 

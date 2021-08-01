@@ -1,36 +1,14 @@
+import { Feather } from '@expo/vector-icons';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { useNavigation, useRoute } from '@react-navigation/native';
+import { format } from 'date-fns';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { Alert, Platform } from 'react-native';
-import Icon from 'react-native-vector-icons/Feather';
-import { format } from 'date-fns';
+
 import Button from '../../components/Button';
 import api from '../../services/api';
 import { useAuth } from '../../contexts/auth';
-import {
-  BackButton,
-  Calendar,
-  CalendarHeader,
-  Container,
-  Header,
-  HeaderText,
-  ProvidersList,
-  ProvidersListContainer,
-  ProviderAvatar,
-  ProviderContainer,
-  ProviderName,
-  Schedule,
-  ScheduleHeader,
-  Section,
-  SectionContent,
-  SectionHeader,
-  Submit,
-  Time,
-  TimeText,
-  UserAvatar,
-  ToggleDatePickerButton,
-  ToggleDatePickerButtonText,
-} from './styles';
+import * as S from './styles';
 
 interface AvailabilityItem {
   hour: number;
@@ -51,7 +29,7 @@ interface RouteParams {
   providerId: string;
 }
 
-const CreateAppointment: React.FC = () => {
+const CreateAppointment = () => {
   const { user } = useAuth();
   const { goBack, navigate } = useNavigation();
   const route = useRoute();
@@ -156,41 +134,41 @@ const CreateAppointment: React.FC = () => {
   }, [availability]);
 
   return (
-    <Container>
-      <Header>
-        <BackButton onPress={handleGoBack}>
-          <Icon name="chevron-left" size={24} color="#999591" />
-        </BackButton>
+    <S.Container>
+      <S.Header>
+        <S.BackButton onPress={handleGoBack}>
+          <Feather name="chevron-left" size={24} color="#999591" />
+        </S.BackButton>
 
-        <HeaderText>Barber</HeaderText>
+        <S.HeaderText>Barber</S.HeaderText>
 
-        <UserAvatar source={{ uri: user.avatar_url }} />
-      </Header>
+        <S.UserAvatar source={{ uri: user.avatar_url }} />
+      </S.Header>
 
-      <ProvidersListContainer>
-        <ProvidersList
+      <S.ProvidersListContainer>
+        <S.ProvidersList
           data={providers}
           keyExtractor={provider => provider.id}
           renderItem={({ item: provider }) => (
-            <ProviderContainer
+            <S.ProviderContainer
               selected={selectedProvider === provider.id}
               onPress={() => handleSelectProvider(provider.id)}
             >
-              <ProviderAvatar source={{ uri: provider.avatar_url }} />
-              <ProviderName selected={selectedProvider === provider.id}>
+              <S.ProviderAvatar source={{ uri: provider.avatar_url }} />
+              <S.ProviderName selected={selectedProvider === provider.id}>
                 {provider.name}
-              </ProviderName>
-            </ProviderContainer>
+              </S.ProviderName>
+            </S.ProviderContainer>
           )}
         />
-      </ProvidersListContainer>
+      </S.ProvidersListContainer>
 
-      <Calendar>
-        <CalendarHeader>Choose the date</CalendarHeader>
+      <S.Calendar>
+        <S.CalendarHeader>Choose the date</S.CalendarHeader>
 
-        <ToggleDatePickerButton onPress={handleToggleDatePicker}>
-          <ToggleDatePickerButtonText>Pick a date</ToggleDatePickerButtonText>
-        </ToggleDatePickerButton>
+        <S.ToggleDatePickerButton onPress={handleToggleDatePicker}>
+          <S.ToggleDatePickerButtonText>Pick a date</S.ToggleDatePickerButtonText>
+        </S.ToggleDatePickerButton>
 
         {showDatePicker && (
           <DateTimePicker
@@ -202,50 +180,50 @@ const CreateAppointment: React.FC = () => {
             minimumDate={new Date()}
           />
         )}
-      </Calendar>
+      </S.Calendar>
 
-      <Schedule>
-        <ScheduleHeader>Choose the time</ScheduleHeader>
+      <S.Schedule>
+        <S.ScheduleHeader>Choose the time</S.ScheduleHeader>
 
-        <Section>
-          <SectionHeader>Morning</SectionHeader>
+        <S.Section>
+          <S.SectionHeader>Morning</S.SectionHeader>
 
-          <SectionContent>
+          <S.SectionContent>
             {morningAvailability.map(({ available, hour, hourFormatted }) => (
-              <Time
+              <S.Time
                 key={hour}
                 available={available}
                 selected={hour === selectedTime}
                 onPress={() => handleSelectTime(hour)}
               >
-                <TimeText>{hourFormatted}</TimeText>
-              </Time>
+                <S.TimeText>{hourFormatted}</S.TimeText>
+              </S.Time>
             ))}
-          </SectionContent>
-        </Section>
+          </S.SectionContent>
+        </S.Section>
 
-        <Section>
-          <SectionHeader>Afternoon</SectionHeader>
+        <S.Section>
+          <S.SectionHeader>Afternoon</S.SectionHeader>
 
-          <SectionContent>
+          <S.SectionContent>
             {afternoonAvailability.map(({ available, hour, hourFormatted }) => (
-              <Time
+              <S.Time
                 key={hour}
                 available={available}
                 selected={hour === selectedTime}
                 onPress={() => handleSelectTime(hour)}
               >
-                <TimeText>{hourFormatted}</TimeText>
-              </Time>
+                <S.TimeText>{hourFormatted}</S.TimeText>
+              </S.Time>
             ))}
-          </SectionContent>
-        </Section>
-      </Schedule>
+          </S.SectionContent>
+        </S.Section>
+      </S.Schedule>
 
-      <Submit>
+      <S.Submit>
         <Button onPress={handleCreateAppointment}>Book</Button>
-      </Submit>
-    </Container>
+      </S.Submit>
+    </S.Container>
   );
 };
 

@@ -1,3 +1,7 @@
+import { Feather } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
+import { FormHandles } from '@unform/core';
+import { Form } from '@unform/mobile';
 import React, { useCallback, useRef } from 'react';
 import {
   Alert,
@@ -8,39 +12,26 @@ import {
   TextInput,
   View,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/Feather';
 import * as Yup from 'yup';
-import { useNavigation } from '@react-navigation/native';
-import { FormHandles } from '@unform/core';
-import { Form } from '@unform/mobile';
 
 import { useAuth } from '../../contexts/auth';
 import getValidationErrors from '../../utils/getValidationErrors';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 
-import logoImg from '../../assets/logo.png';
-
-import {
-  Container,
-  Title,
-  ForgotPassword,
-  ForgotPasswordText,
-  CreateAccount,
-  CreateAccountText,
-} from './styles';
+import * as S from './styles';
 
 interface SignInFormData {
   email: string;
   password: string;
 }
 
-const SignIn: React.FC = () => {
+const SignIn = () => {
   const formRef = useRef<FormHandles>(null);
   const passwordInputRef = useRef<TextInput>(null);
 
   const { signIn } = useAuth();
-  const navigation = useNavigation();
+  const { navigate } = useNavigation();
 
   const handleSubmit = useCallback(
     async (data: SignInFormData) => {
@@ -83,11 +74,11 @@ const SignIn: React.FC = () => {
           contentContainerStyle={{ flex: 1 }}
           keyboardShouldPersistTaps="handled"
         >
-          <Container>
-            <Image source={logoImg} />
+          <S.Container>
+            <Image source={require('../../../assets/logo.png')} />
 
             <View>
-              <Title>Log in</Title>
+              <S.Title>Log in</S.Title>
             </View>
 
             <Form onSubmit={handleSubmit} ref={formRef}>
@@ -125,21 +116,21 @@ const SignIn: React.FC = () => {
               </Button>
             </Form>
 
-            <ForgotPassword
+            <S.ForgotPassword
               onPress={() => {
                 console.log('Forgot password button pressed');
               }}
             >
-              <ForgotPasswordText>Forgot password?</ForgotPasswordText>
-            </ForgotPassword>
-          </Container>
+              <S.ForgotPasswordText>Forgot password?</S.ForgotPasswordText>
+            </S.ForgotPassword>
+          </S.Container>
         </ScrollView>
       </KeyboardAvoidingView>
 
-      <CreateAccount onPress={() => navigation.navigate('SignUp')}>
-        <Icon color="#ff9000" name="log-in" size={20} />
-        <CreateAccountText>Don’t have an account? Sign up</CreateAccountText>
-      </CreateAccount>
+      <S.CreateAccount onPress={() => navigate('SignUp')}>
+        <Feather color="#ff9000" name="log-in" size={20} />
+        <S.CreateAccountText>Don’t have an account? Sign up</S.CreateAccountText>
+      </S.CreateAccount>
     </>
   );
 };

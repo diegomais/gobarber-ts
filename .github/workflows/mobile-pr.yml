@@ -1,0 +1,36 @@
+name: Mobile Pull Request Review
+
+on:
+  pull_request:
+    branches: [ main ]
+    paths:
+    - 'mobile/**'
+  workflow_dispatch:
+
+jobs:
+  publish:
+    name: Install, test and publish a review version
+    runs-on: ubuntu-18.04
+    defaults:
+      run:
+        shell: bash
+        working-directory: mobile
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v2
+      with:
+        node-version: 14.x
+    - uses: expo/expo-github-action@v6
+      with:
+        expo-version: 4.x
+        expo-cache: true
+        token: ${{ secrets.EXPO_TOKEN }}
+    - name: Install dependencies
+      run: yarn install --frozen-lockfile
+    - name: Publish a review version
+      run: expo publish --release-channel=pr-${{ github.event.number }}
+    - uses: unsplash/comment-on-pr@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        msg: App is ready for review, you can [see it here](https://expo.io/@diegomais/projects/gobarber?release-channel=pr-${{ github.event.number }}).

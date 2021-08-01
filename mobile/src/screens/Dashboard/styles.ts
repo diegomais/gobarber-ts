@@ -20,7 +20,7 @@ export const Header = styled.View`
 
 export const HeaderText = styled.Text`
   color: #f4ede8;
-  font-family: 'RobotoSlab-Regular';
+  font-family: 'RobotoSlab_400Regular';
   font-size: 20px;
   line-height: 28px;
 `;
@@ -39,7 +39,7 @@ export const ProvidersList = styled(
 
 export const ProvidersListHeader = styled.Text`
   color: #f4ede8;
-  font-family: 'RobotoSlab-Medium';
+  font-family: 'RobotoSlab_500Medium';
   font-size: 24px;
   margin-bottom: 24px;
 `;
@@ -66,7 +66,7 @@ export const ProviderInfo = styled.View`
 
 export const ProviderName = styled.Text`
   color: #f4ede8;
-  font-family: 'RobotoSlab-Medium';
+  font-family: 'RobotoSlab_500Medium';
   font-size: 18px;
 `;
 
@@ -78,7 +78,7 @@ export const ProviderMeta = styled.View`
 
 export const ProviderMetaText = styled.Text`
   color: #999591;
-  font-family: 'RobotoSlab-Regular';
+  font-family: 'RobotoSlab_400Regular';
   margin-left: 8px;
 `;
 
@@ -90,7 +90,7 @@ export const UserAvatar = styled.Image`
 
 export const UserName = styled.Text`
   color: #ff9000;
-  font-family: 'RobotoSlab-Medium';
+  font-family: 'RobotoSlab_500Medium';
   font-size: 20px;
   line-height: 28px;
 `;
