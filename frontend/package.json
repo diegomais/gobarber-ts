@@ -9,7 +9,7 @@
     "test": "react-scripts test"
   },
   "dependencies": {
-    "@unform/core": "2.1.0",
+    "@unform/core": "2.1.6",
     "@unform/web": "2.1.0",
     "axios": "0.21.1",
     "date-fns": "2.16.1",
