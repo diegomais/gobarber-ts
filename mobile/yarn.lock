@@ -1166,11 +1166,6 @@
   resolved "https://registry.yarnpkg.com/@expo-google-fonts/roboto-slab/-/roboto-slab-0.2.0.tgz#929eb7284bf0e35748005520f5d29bd091531d5a"
   integrity sha512-JJu7szG1G6qeBInybVZcISRSedeN3Sgf9R/sgfKI60LmVDZbdcBydfgrphvk2jd0q2zsAUBd/hpshxoEkLv31w==
 
-"@expo-google-fonts/roboto@^0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@expo-google-fonts/roboto/-/roboto-0.2.0.tgz#00c5904eaa80d90b5b7b11b86c8d4a72a28e922e"
-  integrity sha512-dZ7e0OOHqbKI80htdxlXooAA6UrhqpJY/6w2JC/RW53nUt1U96PGMbE4F5uLXQt93stp3/fc+cvESKKk64kXKg==
-
 "@expo/config-plugins@2.0.4":
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/@expo/config-plugins/-/config-plugins-2.0.4.tgz#955fd70a2aeefbe99ec71cecb1d7ea7b626dc79e"
@@ -1767,6 +1762,13 @@
   dependencies:
     "@types/yargs-parser" "*"
 
+"@unform/core@2.1.6":
+  version "2.1.6"
+  resolved "https://registry.yarnpkg.com/@unform/core/-/core-2.1.6.tgz#75df5fe813d4e94af46ad3570da068ff13d71b99"
+  integrity sha512-coz9rOS1Y+0zygxTTQB+hY1HJ5ee0A40KBdIy/1IdaiFGT5LhZhCWqMorFh8KcqY3J+SInrpGDMmJYObsjEW9w==
+  dependencies:
+    dot-object "^2.1.4"
+
 "@unform/core@^1.9.8":
   version "1.9.8"
   resolved "https://registry.yarnpkg.com/@unform/core/-/core-1.9.8.tgz#c207767b2fcc38c61c492529b8aa41b9d09aabf0"
@@ -1774,10 +1776,12 @@
   dependencies:
     dot-object "^2.1.2"
 
-"@unform/mobile@^1.9.8":
-  version "1.9.8"
-  resolved "https://registry.yarnpkg.com/@unform/mobile/-/mobile-1.9.8.tgz#376ec3c215f7394d8208569753af43b282058dd9"
-  integrity sha512-ExMxxT6CwjyTpEiUfHyZUCMFhsuPpK/ClBkgobPHoPOFrYfGIWiDWpHGLTAWjHAsi140ZR83MsTOpeGwTS8vig==
+"@unform/mobile@2.1.6":
+  version "2.1.6"
+  resolved "https://registry.yarnpkg.com/@unform/mobile/-/mobile-2.1.6.tgz#d55bfd2a943662a5783287dbe8d2639792d55c47"
+  integrity sha512-ny5xnzj0tFSRISALgc6dUikG6LSeS1SOKCzYXdV625yZ1r72lc7RUExeps3gmHjdvALeXHQodtot/DuFoBSh3w==
+  dependencies:
+    "@unform/core" "2.1.6"
 
 "@unimodules/core@~7.1.1":
   version "7.1.1"
@@ -2779,7 +2783,7 @@ destroy@~1.0.4:
   resolved "https://registry.yarnpkg.com/destroy/-/destroy-1.0.4.tgz#978857442c44749e4206613e37946205826abd80"
   integrity sha1-l4hXRCxEdJ5CBmE+N5RiBYJqvYA=
 
-dot-object@^2.1.2:
+dot-object@^2.1.2, dot-object@^2.1.4:
   version "2.1.4"
   resolved "https://registry.yarnpkg.com/dot-object/-/dot-object-2.1.4.tgz#c6c54e9fca510b4d0ea4d65acf33726963843b5f"
   integrity sha512-7FXnyyCLFawNYJ+NhkqyP9Wd2yzuo+7n9pGiYpkmXCTYa8Ci2U0eUNDVg5OuO5Pm6aFXI2SWN8/N/w7SJWu1WA==
