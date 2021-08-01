@@ -2930,7 +2930,7 @@ expand-brackets@^2.1.4:
     snapdragon "^0.8.1"
     to-regex "^3.0.1"
 
-expo-app-loading@^1.1.2:
+expo-app-loading@1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/expo-app-loading/-/expo-app-loading-1.1.2.tgz#9efcc29d373c2cd2fcddde5a04cb13875a539ac4"
   integrity sha512-JdWa9CpB4LpIYgh9WLhpr5KoMOaBob03yBcKdSw1TIDgYUtCGfRLouxadpVOtkudY1x4/NN4ZZrH7Y5nB3SdlA==
@@ -2976,7 +2976,7 @@ expo-file-system@~11.1.3:
     expo-modules-core "~0.2.0"
     uuid "^3.4.0"
 
-expo-font@~9.2.1:
+expo-font@9.2.1, expo-font@~9.2.1:
   version "9.2.1"
   resolved "https://registry.yarnpkg.com/expo-font/-/expo-font-9.2.1.tgz#c7586b009bf3c4c2427d33c360015d354960bd70"
   integrity sha512-sT9nm2Dt1nTLz+Ir1fSpyzqH40eJX324Wu5sPyvT2Ivnmu2rw2rxt3gNa8Kvdb8BPRz4qrRvHR/E+YKMqa6ZgQ==
@@ -2984,7 +2984,7 @@ expo-font@~9.2.1:
     expo-modules-core "~0.2.0"
     fontfaceobserver "^2.1.0"
 
-expo-image-picker@~10.2.2:
+expo-image-picker@10.2.2:
   version "10.2.2"
   resolved "https://registry.yarnpkg.com/expo-image-picker/-/expo-image-picker-10.2.2.tgz#7501a13306029f672a165f53545ee5dc5f5dc009"
   integrity sha512-LCssY/wy4Y/7YsxoUO7PvjqwtQ9L84hxP86RLPnRSUSZy7s+00wnHFctrrtQ0UO4yR2i7rKTMTpkBEP6NVHv2w==
@@ -3030,12 +3030,12 @@ expo-splash-screen@~0.11.2:
     "@expo/configure-splash-screen" "0.5.0"
     "@expo/prebuild-config" "^2.0.0"
 
-expo-status-bar@~1.0.4:
+expo-status-bar@1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/expo-status-bar/-/expo-status-bar-1.0.4.tgz#d8a4c4418b5868c1606969b12bdee85b6fa7d8a4"
   integrity sha512-s7nc496D/Zn1NGiMJ5wu6HyIdXxbgGtmZZtbHm7rpbcmLdf28GmMSNHDx7M0t00BMhky7VAurTCUo+BJs8ugsw==
 
-expo@~42.0.1:
+expo@42.0.3:
   version "42.0.3"
   resolved "https://registry.yarnpkg.com/expo/-/expo-42.0.3.tgz#b92278bcac5c42def707cd1bab8ea2ef077f3120"
   integrity sha512-m8gqCLIMGf/i7XVAicocHOCOWYlLBLUyufGTXZfPHZ4xstSQUTB5PekzMoXoX115zocNbiNASMzy3SFIJ/MP8A==
