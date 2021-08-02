@@ -59,7 +59,7 @@
     "prettier": "2.2.1",
     "ts-jest": "26.5.6",
     "ts-node-dev": "1.1.8",
-    "tsconfig-paths": "3.9.0",
+    "tsconfig-paths": "3.10.1",
     "typescript": "3.8.3"
   }
 }
