@@ -16,7 +16,7 @@
   "dependencies": {
     "aws-sdk": "^2.852.0",
     "bcryptjs": "^2.4.3",
-    "celebrate": "^13.0.4",
+    "celebrate": "^15.0.0",
     "class-transformer": "^0.4.0",
     "cors": "^2.8.5",
     "date-fns": "^2.17.0",
