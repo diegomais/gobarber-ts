@@ -53,7 +53,7 @@
     "eslint-config-airbnb-base": "14.2.1",
     "eslint-config-prettier": "6.15.0",
     "eslint-import-resolver-typescript": "2.4.0",
-    "eslint-plugin-import": "2.23.4",
+    "eslint-plugin-import": "2.24.2",
     "eslint-plugin-prettier": "3.4.0",
     "jest": "27.0.6",
     "prettier": "2.3.2",
