@@ -16,7 +16,7 @@
     "@react-navigation/stack": "5.14.7",
     "@unform/core": "1.9.8",
     "@unform/mobile": "1.9.8",
-    "axios": "0.21.1",
+    "axios": "0.21.2",
     "date-fns": "2.23.0",
     "expo": "42.0.3",
     "expo-app-loading": "1.1.2",
