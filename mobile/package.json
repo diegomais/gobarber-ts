@@ -30,7 +30,7 @@
     "react-native-reanimated": "2.2.2",
     "react-native-safe-area-context": "3.3.2",
     "react-native-screens": "3.5.0",
-    "react-native-web": "0.17.1",
+    "react-native-web": "0.17.5",
     "styled-components": "5.3.0",
     "yup": "0.32.9"
   },
