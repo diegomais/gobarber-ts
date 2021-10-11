@@ -38,7 +38,7 @@
     "@babel/core": "7.15.8",
     "@types/react": "16.14.16",
     "@types/react-native": "0.63.52",
-    "@types/styled-components": "5.1.14",
+    "@types/styled-components": "5.1.15",
     "typescript": "4.0.8"
   },
   "private": true
