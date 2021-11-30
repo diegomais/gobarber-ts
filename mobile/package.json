@@ -31,14 +31,14 @@
     "react-native-safe-area-context": "3.3.2",
     "react-native-screens": "3.5.0",
     "react-native-web": "0.17.5",
-    "styled-components": "5.3.1",
+    "styled-components": "5.3.3",
     "yup": "0.32.9"
   },
   "devDependencies": {
     "@babel/core": "7.15.8",
     "@types/react": "16.14.20",
     "@types/react-native": "0.63.52",
-    "@types/styled-components": "5.1.15",
+    "@types/styled-components": "5.1.16",
     "typescript": "4.0.8"
   },
   "private": true
