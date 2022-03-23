@@ -32,7 +32,7 @@
     "react-native-screens": "3.5.0",
     "react-native-web": "0.17.5",
     "styled-components": "5.3.3",
-    "yup": "0.32.9"
+    "yup": "0.32.11"
   },
   "devDependencies": {
     "@babel/core": "7.15.8",
