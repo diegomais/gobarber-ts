@@ -49,29 +49,35 @@ These instructions will get you a copy of the full project up and running on you
 
 You will need to install [Git](https://git-scm.com/downloads), [Docker Desktop](https://www.docker.com/products/docker-desktop) and [Docker Compose](https://docs.docker.com/compose/install/) before following the instructions below.
 
-### Installation using Docker Compose
+### Setting up the development environment
 
 The following steps need to be performed inside a terminal window (Windows user may prefer to use the [Windows Terminal](https://aka.ms/windowsterminal) but the Command Prompt will also work).
 
 Clone the repository and build Docker images:
 
-```
+```shell
+# Clone repository
 git clone https://github.com/diegomais/gobarber-ts.git
+
+# Change directory
 cd gobarber-ts
+
+# Build Docker images
 docker-compose build
-```
 
-Apply database migrations, collect static assets:
+# Create .env from example file
+if [ ! -f $PWD/backend/.env ]; then cp $PWD/backend/.env.example $PWD/backend/.env; fi
 
-```
+# Apply database migrations
 docker-compose run --rm backend yarn typeorm migration:run
 ```
 
-### Running the services
+### Running application containers
 
 Use the following command to run all GoBarber containers (from within the gobarber-ts directory):
 
-```
+```shell
+# Start containers
 docker-compose up
 ```
 
@@ -92,14 +98,14 @@ Follow the instructions for React Native CLI available in the official [React Na
 
 Run the instructions bellow inside `mobile` directory:
 
-```
+```shell
 npm install
 npm start
 ```
 
 or
 
-```
+```shell
 yarn install
 yarn start
 ```

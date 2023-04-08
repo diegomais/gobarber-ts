@@ -4,76 +4,45 @@ services:
   backend:
     build:
       context: ./backend
-      dockerfile: ./Dockerfile
+      target: deps      
+    command: yarn dev:server -- --host 0.0.0.0
     ports:
       - 3333:3333
-    restart: unless-stopped
-    networks:
-      - gobarber-backend-tier
     depends_on:
       - postgres
       - mongo
       - redis
     volumes:
-      - ./backend/:/app/
-      - /app/node_modules/
-    command: yarn dev:server -- --host 0.0.0.0
+      - ./backend/:/home/node/app/
+      - /home/node/app/node_modules/
 
   frontend:
     build:
       context: ./frontend
-      dockerfile: ./Dockerfile
+      target: deps
+    command: yarn start -- --host 0.0.0.0
     ports:
       - 3000:3000
-    restart: unless-stopped
-    volumes:
-      - ./frontend/:/app/
-      - /app/node_modules/
-    command: yarn start -- --host 0.0.0.0
     stdin_open: true
+    volumes:
+      - ./frontend/:/home/node/app/
+      - /home/node/app/node_modules/
 
   postgres:
     image: postgres:alpine
-    ports:
-      - 5432:5432
-    restart: unless-stopped
-    networks:
-      - gobarber-backend-tier
-    volumes:
-      - gobarber-postgres-data:/var/lib/postgresql/data
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=docker
       - POSTGRES_DB=gobarber
+    ports:
+      - 5432:5432
 
   mongo:
     image: mongo
     ports:
       - 27017:27017
-    restart: unless-stopped
-    networks:
-      - gobarber-backend-tier
-    volumes:
-      - gobarber-mongo-data:/data/db
 
   redis:
     image: redis:alpine
     ports:
       - 6379:6379
-    restart: unless-stopped
-    networks:
-      - gobarber-backend-tier
-    volumes:
-      - gobarber-redis-data:/data
-
-volumes:
-  gobarber-postgres-data:
-    driver: local
-  gobarber-redis-data:
-    driver: local
-  gobarber-mongo-data:
-    driver: local
-
-networks:
-  gobarber-backend-tier:
-    driver: bridge

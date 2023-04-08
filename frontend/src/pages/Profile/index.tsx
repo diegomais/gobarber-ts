@@ -40,13 +40,13 @@ const Profile: React.FC = () => {
             .email('Invalid email.'),
           old_password: Yup.string(),
           password: Yup.string().when('old_password', {
-            is: val => !!val.length,
+            is: (val: string) => !!val.length,
             then: Yup.string().required('Password is required.'),
             otherwise: Yup.string(),
           }),
           password_confirmation: Yup.string()
             .when('old_password', {
-              is: val => !!val.length,
+              is: (val: string) => !!val.length,
               then: Yup.string().required('Password is required.'),
               otherwise: Yup.string(),
             })
