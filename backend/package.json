@@ -33,7 +33,7 @@
     "rate-limiter-flexible": "^2.2.1",
     "reflect-metadata": "^0.1.13",
     "tsyringe": "^4.4.0",
-    "typeorm": "^0.2.31",
+    "typeorm": "^0.3.0",
     "uuidv4": "^6.2.6"
   },
   "devDependencies": {
