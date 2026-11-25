@@ -18,7 +18,7 @@
     "@unform/mobile": "1.9.8",
     "axios": "0.28.0",
     "date-fns": "2.23.0",
-    "expo": "42.0.3",
+    "expo": "48.0.0",
     "expo-app-loading": "1.1.2",
     "expo-font": "9.2.1",
     "expo-image-picker": "10.2.2",
